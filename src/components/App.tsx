@@ -1,14 +1,21 @@
-import { Modal } from "../components";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { lazy } from "react";
 
-import { useModal } from "../hooks";
+import { SharedLayout } from "../components";
+
+const Home = lazy(() => import("../pages/Home/Home"));
+const Psyhologists = lazy(() => import("../pages/Psyhologists/Psyhologists"));
+const Favorites = lazy(() => import("../pages/Favorites/Favorites"));
 
 export const App = () => {
-  const [isOpenModal, toggleModal] = useModal();
   return (
-    <div className="h-screen flex flex-col justify-center items-center">
-      <h1 className="font-inter-regular text-4xl ">Psychologists.Services</h1>
-      <button onClick={toggleModal}>Open Modal</button>
-      {isOpenModal && <Modal toggleModal={toggleModal}>qwe</Modal>}
-    </div>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/psyhologists" element={<Psyhologists />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
   );
 };
