@@ -1,5 +1,7 @@
 import ReactDOM from "react-dom";
 
+import { Icon } from "../../components";
+
 import { useEscapeKeyClose } from "../../hooks";
 
 interface ModalProps {
@@ -23,13 +25,13 @@ export const Modal = ({ children, toggleModal }: ModalProps) => {
       className="flex items-center justify-center fixed bg-[#191a15] bg-opacity-60 w-full h-full left-0 top-0 z-50"
       onClick={handleClickOnBackdrop}
     >
-      <div className="relative rounded-xl bg-[#FBFBFB] p-16">
+      <div className="relative rounded-[30px] bg-[#FBFBFB] p-16">
         <button
           type="button"
           onClick={toggleModal}
-          className="absolute top-2.5 right-2.5"
+          className="absolute top-7 right-7"
         >
-          X
+          <Icon id="close" className="stroke-[#191A15]" size="28" />
         </button>
         {children}
       </div>

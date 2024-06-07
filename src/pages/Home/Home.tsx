@@ -8,7 +8,7 @@ import woman2x from "../../assets/images/woman2x.jpg";
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <section className="pt-[78px] pb-[100px] bg-gradient-to-r from-firstGradColor to-secondGradColor">
+    <section className="h-[85vh] pt-[78px] pb-[100px] bg-gradient-to-r from-firstGradColor to-secondGradColor">
       <div className="container flex gap-[125px] items-center">
         <div className="text-left">
           <h1 className="font-semibold text-[80px] leading-[102%] tracking-[-0.02em] mb-[20px]">
