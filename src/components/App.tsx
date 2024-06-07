@@ -10,7 +10,8 @@ const Psyhologists = lazy(() => import("../pages/Psyhologists/Psyhologists"));
 const Favorites = lazy(() => import("../pages/Favorites/Favorites"));
 
 export const App = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
+  console.log(theme);
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
