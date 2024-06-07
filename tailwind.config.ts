@@ -8,10 +8,18 @@ export default {
       lg: "1440px",
     },
     extend: {
+      colors: {
+        accentColor: "var(--accent-color)",
+        firstGradColor: "var(--first-grad-color)",
+        secondGradColor: "var(--second-grad-color)",
+      },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
       },
     },
+  },
+  corePlugins: {
+    container: false,
   },
   plugins: [
     ({ addComponents }) => {
@@ -29,8 +37,8 @@ export default {
             maxWidth: "768px",
           },
           "@screen lg": {
-            paddingLeft: "100px",
-            paddingRight: "100px",
+            paddingLeft: "128px",
+            paddingRight: "128px",
             maxWidth: "1440px",
           },
         },
