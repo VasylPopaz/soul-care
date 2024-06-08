@@ -10,11 +10,15 @@ export default {
     extend: {
       colors: {
         accentColor: "var(--accent-color)",
+        accentHoverColor: "var(--accent-hover-color)",
         firstGradColor: "var(--first-grad-color)",
         secondGradColor: "var(--second-grad-color)",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
+      },
+      boxShadow: {
+        "custom-inset": "0 20px 69px 0 rgba(0, 0, 0, 0.07)",
       },
     },
   },

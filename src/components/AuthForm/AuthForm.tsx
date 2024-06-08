@@ -27,7 +27,7 @@ export const AuthForm = ({ mode, toggleModal }: AuthFormProps) => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, dirtyFields },
   } = useForm<FormData>({
     mode: "onChange",
     resolver: yupResolver(mode === "signIn" ? signInSchema : signUpSchema),
@@ -52,33 +52,37 @@ export const AuthForm = ({ mode, toggleModal }: AuthFormProps) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         {mode === "signUp" ? (
           <InputField
-            className="mb-[18px]"
+            divClass="mb-[18px]"
             placeholder="Name"
             name="name"
             type="text"
             register={register as unknown as UseFormRegister<FieldValues>}
             errors={errors}
+            dirtyFields={dirtyFields}
           />
         ) : null}
         <InputField
-          className="mb-[18px]"
+          divClass="mb-[18px]"
           placeholder="Email"
           name="email"
           type="text"
           register={register as unknown as UseFormRegister<FieldValues>}
           errors={errors}
+          dirtyFields={dirtyFields}
         />
         <InputField
-          className="mb-10 pr-[40px]"
+          divClass="mb-[10px]"
+          className="pr-[40px]"
           placeholder="Password"
           name="password"
           type="password"
           register={register as unknown as UseFormRegister<FieldValues>}
           errors={errors}
+          dirtyFields={dirtyFields}
         />
         <button
           type="submit"
-          className="btn w-full py-4 px-[196px] bg-accentColor text-[#fbfbfb] active:bg-[#36a379] focus:bg-[#36a379] lg:hover:bg-[#36a379]"
+          className="btn w-full py-4 px-[196px] bg-accentColor text-[#fbfbfb] active:bg-[] focus:bg-[] lg:hover:bg-[]"
         >
           {mode === "signIn" ? "Log In" : "Sign Up"}
         </button>

@@ -17,7 +17,7 @@ export const Header = () => {
         } border-b border-b-[rgba(25, 26, 21, 0.1)]`}
       >
         <div className="container flex justify-between items-center">
-          <nav className="flex gap-[130px] items-center">
+          <nav className="flex md:gap-[60px] lg:gap-[130px] items-center">
             <Link
               to="/"
               className=" font-semibold text-[20px] leading-[120%] tracking-[-0.02em]"
@@ -28,7 +28,7 @@ export const Header = () => {
               services
             </Link>
 
-            <ul className="flex gap-10 text-[16px] leading-[125%] tracking-[-0.01em]">
+            <ul className="flex md:gap-4 lg:gap-10 text-[16px] leading-[125%] tracking-[-0.01em]">
               <li>
                 <NavLink
                   to="/"

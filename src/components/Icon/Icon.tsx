@@ -4,11 +4,12 @@ interface IconProps {
   id: string;
   className: string;
   size: string;
+  onClick?: React.MouseEventHandler<SVGElement>;
 }
 
-export const Icon = ({ id, className, size }: IconProps) => {
+export const Icon = ({ id, size, ...rest }: IconProps) => {
   return (
-    <svg className={className} height={size} width={size}>
+    <svg height={size} width={size} {...rest}>
       <use href={Icons + "#icon-" + id}></use>
     </svg>
   );

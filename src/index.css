@@ -5,17 +5,21 @@
 /* Themes */
 html[data-theme="green"] {
   --accent-color: #54be96;
+  --accent-hover-color: #36a379;
   --first-grad-color: #fbfbfb;
   --second-grad-color: #eff7f4;
 }
 html[data-theme="blue"] {
   --accent-color: #3470ff;
+  --accent-hover-color: #255ee8;
   --first-grad-color: #fbfbfb;
   --second-grad-color: #eff3fb;
 }
 html[data-theme="orange"] {
   --accent-color: #fc832c;
-  --first-grad-color: #fbfbfb;
+  --accent-hover-color: #f37113;
+  --circle-color: #38cd3e;
+  --irst-grad-color: #fbfbfb;
   --second-grad-color: #fbf4ef;
 }
 /* -------------------------- */

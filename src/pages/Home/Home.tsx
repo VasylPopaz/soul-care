@@ -8,9 +8,9 @@ import woman2x from "../../assets/images/woman2x.jpg";
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <section className="h-[85vh] pt-[78px] pb-[100px] bg-gradient-to-r from-firstGradColor to-secondGradColor">
-      <div className="container flex gap-[125px] items-center">
-        <div className="text-left">
+    <section className="lg:h-[85vh] md:pt-[48px] lg:pt-[78px] md:pb-[40px] lg:pb-[100px] bg-gradient-to-r from-firstGradColor to-secondGradColor">
+      <div className="container flex md:flex-col md:gap-[40px] lg:flex-row lg:gap-[125px] items-center">
+        <div className="lg:text-left">
           <h1 className="font-semibold text-[80px] leading-[102%] tracking-[-0.02em] mb-[20px]">
             The road to the{" "}
             <span className="text-accentColor italic">depths</span> of the human
@@ -23,7 +23,7 @@ const Home = () => {
           </p>
           <button
             type="button"
-            className="flex items-center gap-[18px] btn py-[18px] px-[50px] bg-accentColor border-transparent text-[20px] text-[#fbfbfb] leading-[120%] tracking-[-0.01em]  active:bg-[#36a379] focus:bg-[#36a379] lg:hover:bg-[#36a379]"
+            className="flex items-center gap-[18px] btn py-[18px] px-[50px] bg-accentColor border-transparent text-[20px] text-[#fbfbfb] leading-[120%] tracking-[-0.01em]  active:bg-accentHoverColor focus:bg-accentHoverColor lg:hover:bg-accentHoverColor"
             onClick={() => navigate("/psyhologists")}
           >
             Get started
@@ -63,7 +63,7 @@ const Home = () => {
             alt="Woman"
             width={464}
             height={526}
-            className="max-w-none"
+            className="max-w-none md:w-[540px]"
           />
         </div>
       </div>
