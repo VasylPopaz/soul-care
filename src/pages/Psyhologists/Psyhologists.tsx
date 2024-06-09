@@ -1,8 +1,13 @@
+import { PsyhologistsList, Filter } from "../../components";
+
+import psyhologists from "../../assets/psychologists.json";
+
 const Psyhologists = () => {
   return (
     <section className="pt-[64px] pb-[100px]">
       <div className="container">
-        <h1 className="font-inter-regular text-4xl ">Psychologists.Services</h1>
+        <Filter />
+        <PsyhologistsList psyhologists={psyhologists} />
       </div>
     </section>
   );
