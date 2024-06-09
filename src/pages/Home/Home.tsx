@@ -23,7 +23,7 @@ const Home = () => {
           </p>
           <button
             type="button"
-            className="flex items-center gap-[18px] btn py-[18px] px-[50px] bg-accentColor border-transparent text-[20px] text-[#fbfbfb] leading-[120%] tracking-[-0.01em]  active:bg-accentHoverColor focus:bg-accentHoverColor lg:hover:bg-accentHoverColor"
+            className="btn-primary flex items-center gap-[18px] py-[18px] px-[50px] text-[20px] leading-[120%] tracking-[-0.01em]"
             onClick={() => navigate("/psyhologists")}
           >
             Get started
@@ -63,7 +63,7 @@ const Home = () => {
             alt="Woman"
             width={464}
             height={526}
-            className="max-w-none md:w-[540px]"
+            className="md:w-[540px] rounded-[10px]"
           />
         </div>
       </div>

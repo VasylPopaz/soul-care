@@ -10,8 +10,8 @@ export const signUpSchema = yup.object().shape({
     .max(32, "Max length must be less than 32 chars"),
   email: yup
     .string()
-    .matches(emailRegExp, "Enter a valid Email")
-    .email("Enter a valid Email")
+    .matches(emailRegExp, "Enter a valid email")
+    .email("Enter a valid email")
     .required("Email is required")
     .max(64, "Max length must be less than 64 chars"),
   password: yup

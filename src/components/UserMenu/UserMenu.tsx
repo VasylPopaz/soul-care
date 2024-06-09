@@ -14,7 +14,7 @@ export const UserMenu = () => {
 
       <button
         type="button"
-        className="btn py-[14px] px-[40px] bg-transparent border border-[rgba(25, 26, 21, 0.2)] font-medium text-[16px] leading-[125%] tracking-[-0.01em] active:border-accentColor focus:border-accentColor lg:hover:border-accentColor active:text-accentColor focus:text-accentColor lg:hover:text-accentColor"
+        className="btn-secondary py-[14px] px-[40px] font-medium text-[16px] leading-[125%] tracking-[-0.01em]"
       >
         Log Out
       </button>

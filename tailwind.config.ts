@@ -11,6 +11,7 @@ export default {
       colors: {
         accentColor: "var(--accent-color)",
         accentHoverColor: "var(--accent-hover-color)",
+        reviewBgColor: "var(--review-bg-color)",
         firstGradColor: "var(--first-grad-color)",
         secondGradColor: "var(--second-grad-color)",
       },

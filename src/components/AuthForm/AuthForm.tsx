@@ -80,10 +80,7 @@ export const AuthForm = ({ mode, toggleModal }: AuthFormProps) => {
           errors={errors}
           dirtyFields={dirtyFields}
         />
-        <button
-          type="submit"
-          className="btn w-full py-4 px-[196px] bg-accentColor text-[#fbfbfb] active:bg-[] focus:bg-[] lg:hover:bg-[]"
-        >
+        <button type="submit" className="btn-primary w-full py-4 px-[196px]">
           {mode === "signIn" ? "Log In" : "Sign Up"}
         </button>
       </form>

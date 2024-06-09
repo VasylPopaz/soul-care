@@ -6,19 +6,21 @@
 html[data-theme="green"] {
   --accent-color: #54be96;
   --accent-hover-color: #36a379;
+  --review-bg-color: #54be9633;
   --first-grad-color: #fbfbfb;
   --second-grad-color: #eff7f4;
 }
 html[data-theme="blue"] {
   --accent-color: #3470ff;
   --accent-hover-color: #255ee8;
+  --review-bg-color: #3470ff33;
   --first-grad-color: #fbfbfb;
   --second-grad-color: #eff3fb;
 }
 html[data-theme="orange"] {
   --accent-color: #fc832c;
   --accent-hover-color: #f37113;
-  --circle-color: #38cd3e;
+  --review-bg-color: #fc832c33;
   --irst-grad-color: #fbfbfb;
   --second-grad-color: #fbf4ef;
 }
@@ -66,14 +68,22 @@ html[data-theme="orange"] {
 }
 /* --------------- */
 body {
-  background-color: #fbfbfb;
+  background-color: #f3f3f3;
   color: #191a15;
   font-family: "Inter", sans-serif;
-  font-weight: 500;
+  font-weight: 400;
+}
+@layer base {
+  img {
+    max-width: none;
+  }
 }
 .active {
   @apply relative after:content-[''''] after:h-2 after:w-2 after:rounded-[50%] after:bg-accentColor after:absolute after:bottom-[28px] after:left-[50%] after:translate-x-[-50%];
 }
-.btn {
-  @apply rounded-[30px] transition duration-300;
+.btn-primary {
+  @apply text-[#fbfbfb] border-transparent bg-accentColor active:bg-accentHoverColor focus:bg-accentHoverColor lg:hover:bg-accentHoverColor rounded-[30px] transition duration-300;
+}
+.btn-secondary {
+  @apply bg-transparent border border-[#191a1533]  active:border-accentColor focus:border-accentColor lg:hover:border-accentColor active:text-accentColor focus:text-accentColor lg:hover:text-accentColor rounded-[30px] transition duration-300;
 }
