@@ -42,7 +42,7 @@ export const AuthForm = ({ mode, toggleModal }: AuthFormProps) => {
   return (
     <>
       <h2 className="title">{mode === "signIn" ? "Log In" : "Registration"}</h2>
-      <p className="description w-[438px]">
+      <p className="description w-[260px] md:w-[400px] lg:w-[438px]">
         {mode === "signIn"
           ? "Welcome back! Please enter your credentials to access your account and        continue your search for a psychologist."
           : "Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information."}
@@ -69,7 +69,7 @@ export const AuthForm = ({ mode, toggleModal }: AuthFormProps) => {
           dirtyFields={dirtyFields}
         />
         <InputField
-          divClass="mb-[10px]"
+          divClass="mb-6 md:mb-10"
           className="pr-[40px]"
           placeholder="Password"
           name="password"

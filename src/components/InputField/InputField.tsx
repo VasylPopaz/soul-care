@@ -157,7 +157,7 @@ export const InputField = ({
         </button>
       )}
       {(errors[name]?.message && dirtyFields[name]) || errors[name]?.message ? (
-        <p className="text-red-700 text-[12px] bg-[#fbfbfb] absolute bottom-[-9px] left-[12px] px-[4px] rounded-[18px]">
+        <p className="text-red-700 text-[10px] md:text-[12px] bg-[#fbfbfb] absolute bottom-[-9px] left-[12px] px-[4px] rounded-[18px]">
           <>{errors[name]?.message}</>
         </p>
       ) : null}

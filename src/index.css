@@ -79,10 +79,10 @@ body {
   }
 }
 .title {
-  @apply font-medium text-[40px] leading-[120%] tracking-[-0.02em] mb-5;
+  @apply font-medium text-[30px] md:text-[40px] leading-[120%] tracking-[-0.02em] mb-3 md:mb-5;
 }
 .description {
-  @apply text-[16px] text-[#191a15] opacity-50 leading-[125%] mb-10;
+  @apply text-[14px] md:text-[16px] text-[#191a15] opacity-50 leading-[125%] mb-5 md:mb-10;
 }
 .active {
   @apply relative after:content-[''''] after:h-2 after:w-2 after:rounded-[50%] after:bg-accentColor after:absolute after:bottom-[28px] after:left-[50%] after:translate-x-[-50%];

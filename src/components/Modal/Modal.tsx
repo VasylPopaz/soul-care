@@ -5,7 +5,7 @@ import { Icon } from "../../components";
 import { useEscapeKeyClose } from "../../hooks";
 
 interface ModalProps {
-  className: string;
+  className?: string;
   children: React.ReactNode;
   toggleModal: () => void;
 }
@@ -27,7 +27,7 @@ export const Modal = ({ className, children, toggleModal }: ModalProps) => {
       onClick={handleClickOnBackdrop}
     >
       <div
-        className={`relative rounded-[30px] bg-[#FBFBFB] p-16 sm-max:max-w-[300px] max-w-[330px] md:max-w-[700px] lg:max-w-[1180px] max-h-[95%] ${className}`}
+        className={`relative rounded-[30px] bg-[#FBFBFB] p-8 md:p-12 sm-max:max-w-[300px] max-w-[330px] md:max-w-[700px] lg:max-w-[1180px] max-h-[95%] ${className}`}
       >
         <button
           type="button"
