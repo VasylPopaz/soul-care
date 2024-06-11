@@ -52,21 +52,14 @@ export const Filter = () => {
           onClick={handleToggle}
         >
           {sortBy}
-          {isOpen ? (
-            <Icon
-              id="chevron"
-              className="fill-none stroke-white"
-              size="20"
-              onClick={handleIconClick}
-            />
-          ) : (
-            <Icon
-              id="chevron"
-              className="fill-none stroke-white rotate-[180deg]"
-              size="20"
-              onClick={handleIconClick}
-            />
-          )}
+          <Icon
+            id="chevron"
+            className={`fill-none stroke-white transition duration-300 ${
+              isOpen ? "" : "rotate-[180deg]"
+            }`}
+            size="15"
+            onClick={handleIconClick}
+          />
         </div>
         {isOpen && (
           <ul className="w-full py-[14px] px-[18px] bg-[#fff] rounded-[14px] overflow-hidden block absolute top-[60px] left-0 z-[1] space-y-[8px] shadow-custom-inset text-[16px] text-[#191a154c] leading-[125%]">

@@ -1,7 +1,7 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 import { UserMenu, AuthNav } from "../../components";
-import { useState } from "react";
 
 export const Header = () => {
   const location = useLocation();
@@ -19,7 +19,7 @@ export const Header = () => {
       >
         <button
           type="button"
-          className="absolute top-[50%] left-[60%] translate-y-[-50%] btn py-[8px] lg:py-[14px] px-[20px] lg:px-[40px] bg-transparent border border-[rgba(25, 26, 21, 0.2)] font-medium text-[16px] leading-[125%] tracking-[-0.01em] active:border-accentColor focus:border-accentColor lg:hover:border-accentColor active:text-accentColor focus:text-accentColor lg:hover:text-accentColor"
+          className="absolute top-[50%] left-[60%] translate-y-[-50%] btn py-[8px] lg:py-[14px] px-[20px] lg:px-[40px] bg-transparent border border-[#191a1533] font-medium text-[16px] leading-[125%] tracking-[-0.01em] active:border-accentColor focus:border-accentColor lg:hover:border-accentColor active:text-accentColor focus:text-accentColor lg:hover:text-accentColor"
           onClick={() => {
             setIsLoggedIn(!isLoggedIn);
           }}

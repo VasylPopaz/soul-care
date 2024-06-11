@@ -5,13 +5,14 @@ import { Icon } from "../../components";
 import { useEscapeKeyClose } from "../../hooks";
 
 interface ModalProps {
+  className: string;
   children: React.ReactNode;
   toggleModal: () => void;
 }
 
 const modalRoot = document.querySelector("#modalRoot")!;
 
-export const Modal = ({ children, toggleModal }: ModalProps) => {
+export const Modal = ({ className, children, toggleModal }: ModalProps) => {
   useEscapeKeyClose(toggleModal);
 
   const handleClickOnBackdrop = (e: React.MouseEvent<HTMLDivElement>): void => {
@@ -22,10 +23,12 @@ export const Modal = ({ children, toggleModal }: ModalProps) => {
 
   return ReactDOM.createPortal(
     <div
-      className="flex items-center justify-center fixed bg-[#191a15] bg-opacity-60 w-full h-full left-0 top-0 z-50"
+      className="flex items-center justify-center fixed bg-[#191a15] bg-opacity-60 w-full h-full  left-0 top-0 z-50"
       onClick={handleClickOnBackdrop}
     >
-      <div className="relative rounded-[30px] bg-[#FBFBFB] p-16">
+      <div
+        className={`relative rounded-[30px] bg-[#FBFBFB] p-16 sm-max:max-w-[300px] max-w-[330px] md:max-w-[700px] lg:max-w-[1180px] max-h-[95%] ${className}`}
+      >
         <button
           type="button"
           onClick={toggleModal}

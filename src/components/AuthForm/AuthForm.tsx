@@ -41,10 +41,8 @@ export const AuthForm = ({ mode, toggleModal }: AuthFormProps) => {
 
   return (
     <>
-      <h2 className="font-medium text-[40px] leading-[120%] tracking-[-0.02em] mb-5">
-        {mode === "signIn" ? "Log In" : "Registration"}
-      </h2>
-      <p className="w-[438px] text-[16px] text-[rgb(25, 26, 21)] opacity-50 leading-[125%] mb-10">
+      <h2 className="title">{mode === "signIn" ? "Log In" : "Registration"}</h2>
+      <p className="description w-[438px]">
         {mode === "signIn"
           ? "Welcome back! Please enter your credentials to access your account and        continue your search for a psychologist."
           : "Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information."}
@@ -80,7 +78,7 @@ export const AuthForm = ({ mode, toggleModal }: AuthFormProps) => {
           errors={errors}
           dirtyFields={dirtyFields}
         />
-        <button type="submit" className="btn-primary w-full py-4 px-[196px]">
+        <button type="submit" className="btn-primary w-full p-4">
           {mode === "signIn" ? "Log In" : "Sign Up"}
         </button>
       </form>

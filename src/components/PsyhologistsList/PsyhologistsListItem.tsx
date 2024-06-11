@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Icon, Modal } from "..";
+
+import { AppointmentForm, Icon, Modal } from "../../components";
 
 import { Psyhologist } from "../../types";
 import { useModal } from "../../hooks";
@@ -57,7 +58,7 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
 
               <div className="flex gap-4 font-medium text-[16px] leading-[150%]">
                 <div className="flex gap-2">
-                  <Icon id="star" className="fill-[#ffc531]" size="20" />
+                  <Icon id="star" className="fill-[#ffc531]" size="22" />
                   <p> Rating: {rating}</p>
                 </div>
                 <span className="text-[#191a1533]">|</span>
@@ -158,7 +159,15 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
           </div>
         </div>
       </li>
-      {isOpenModal && <Modal toggleModal={toggleModal}>Appointment</Modal>}
+      {isOpenModal && (
+        <Modal toggleModal={toggleModal} className="py-12">
+          <AppointmentForm
+            name={name}
+            url={avatar_url}
+            toggleModal={toggleModal}
+          />
+        </Modal>
+      )}
     </>
   );
 };
