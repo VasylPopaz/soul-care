@@ -52,7 +52,7 @@ export const AppointmentForm = ({
   };
 
   return (
-    <div className="scrollbar h-[85vh] pr-[10px] md:pr-3">
+    <div className="scrollbar h-[75vh] pr-[10px] md:pr-3">
       <h2 className="title  w-full md:w-[400px]">
         Make an appointment with a psychologists
       </h2>

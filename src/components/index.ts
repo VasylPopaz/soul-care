@@ -7,6 +7,7 @@ export * from "./Filter/Filter";
 export * from "./Header/Header";
 export * from "./Icon/Icon";
 export * from "./InputField/InputField";
+export * from "./LoadMoreButton/LoadMoreButton";
 export * from "./MobileMenu/MobileMenu";
 export * from "./Modal/Modal";
 export * from "./NavMenu/NavMenu";

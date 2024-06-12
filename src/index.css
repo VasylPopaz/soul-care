@@ -166,7 +166,8 @@ body {
 /* -------- */
 /* Scroll */
 .scrollbar {
-  overflow: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .scrollbar::-webkit-scrollbar {
   width: 5px;
