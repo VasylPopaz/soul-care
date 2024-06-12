@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import { Icon } from "../../components";
+import { handleKeyDown } from "../../helpers";
 
 interface InputProps {
   tag?: "input" | "textarea" | "datepicker";
@@ -48,43 +49,13 @@ export const InputField = ({
     setIsFilled(!!value);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const { key, target } = e;
-    const value = (target as HTMLInputElement).value;
-
-    if (
-      !/[0-9]/.test(key) &&
-      key !== "Backspace" &&
-      key !== "Delete" &&
-      key !== "ArrowLeft" &&
-      key !== "ArrowRight" &&
-      key !== "Tab" &&
-      key !== "Home" &&
-      key !== "End"
-    ) {
-      e.preventDefault();
-    }
-
-    if (
-      value.length >= 9 &&
-      key !== "Backspace" &&
-      key !== "Delete" &&
-      key !== "ArrowLeft" &&
-      key !== "ArrowRight" &&
-      key !== "Tab" &&
-      key !== "Home" &&
-      key !== "End"
-    ) {
-      e.preventDefault();
-    }
-  };
-
   const handleDivClick = () => {
     const inputElement = document.getElementById(name);
-    if (inputElement) {
-      inputElement.focus();
-    }
 
+    inputElement && inputElement.focus();
+  };
+
+  const handleIconClick = () => {
     inputRef.current && inputRef.current.setFocus();
   };
 
@@ -104,7 +75,7 @@ export const InputField = ({
           type={showPass ? "text" : type}
           placeholder=""
           defaultValue={defaultValue}
-          onKeyDown={name === "phone" ? handleKeyDown : () => {}}
+          onKeyDown={name === "phone" ? (e) => handleKeyDown(e) : () => {}}
           className={`group-input px-[18px] py-4 rounded-[12px] border border-[#191a15] border-opacity-10 bg-transparent outline-none w-full hover:border-accentColor focus:border-accentColor placeholder:text-[#191a15] transition duration-300 ${className}`}
           autoComplete="on"
         />
@@ -134,6 +105,7 @@ export const InputField = ({
             id="clock"
             size="20"
             className="absolute top-[50%] right-[20px] translate-y-[-50%] fill-none stroke-[#191a15]"
+            onClick={handleIconClick}
           />
         </>
       )}

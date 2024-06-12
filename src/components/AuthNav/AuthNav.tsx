@@ -3,18 +3,28 @@ import { useState } from "react";
 import { AuthForm, Modal } from "../../components";
 
 import { useModal } from "../../hooks";
+import { useMobileMenuContext } from "../../context";
 
 export const AuthNav = () => {
+  const isMobileMenu = useMobileMenuContext();
   const [mode, setMode] = useState("");
 
   const [isOpenModal, toggleModal] = useModal();
   return (
     <>
-      <ul className="flex gap-3">
-        <li>
+      <ul
+        className={`${
+          isMobileMenu
+            ? "flex flex-col items-center gap-4"
+            : "hidden lg:flex gap-3"
+        } `}
+      >
+        <li className={`${isMobileMenu ? "w-full" : ""}`}>
           <button
             type="button"
-            className="btn-secondary py-[8px] lg:py-[14px] px-[20px] lg:px-[40px] font-medium text-[16px] leading-[125%] tracking-[-0.01em] "
+            className={`btn-secondary py-[8px] lg:py-[14px] px-[20px] lg:px-[40px] font-medium text-[16px] leading-[125%] tracking-[-0.01em] ${
+              isMobileMenu ? "w-full" : ""
+            }`}
             onClick={() => {
               setMode("signIn");
               toggleModal();
@@ -23,10 +33,12 @@ export const AuthNav = () => {
             Log In
           </button>
         </li>
-        <li>
+        <li className={`${isMobileMenu ? "w-full" : ""}`}>
           <button
             type="button"
-            className="btn-primary py-[8px] lg:py-[14px] px-[20px] lg:px-[40px] font-medium text-[16px] leading-[125%] tracking-[-0.01em]"
+            className={`btn-primary py-[8px] lg:py-[14px] px-[20px] lg:px-[40px] font-medium text-[16px] leading-[125%] tracking-[-0.01em] ${
+              isMobileMenu ? "w-full" : ""
+            }`}
             onClick={() => {
               setMode("signUp");
               toggleModal();

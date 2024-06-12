@@ -1,9 +1,13 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
-import { UserMenu, AuthNav } from "../../components";
+import { UserMenu, AuthNav, Icon, MobileMenu, NavMenu } from "../../components";
+
+import { useModal } from "../../hooks";
+import { MobileMenuContext } from "../../context";
 
 export const Header = () => {
+  const [isOpenMenu, toggleMenu] = useModal();
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
@@ -19,7 +23,7 @@ export const Header = () => {
       >
         <button
           type="button"
-          className="absolute top-[50%] left-[60%] translate-y-[-50%] btn py-[8px] lg:py-[14px] px-[20px] lg:px-[40px] bg-transparent border border-[#191a1533] font-medium text-[16px] leading-[125%] tracking-[-0.01em] active:border-accentColor focus:border-accentColor lg:hover:border-accentColor active:text-accentColor focus:text-accentColor lg:hover:text-accentColor"
+          className="absolute top-[50%] left-[60%] translate-y-[-50%] btn py-[8px] lg:py-[14px] px-[10px] bg-transparent border border-[#191a1533] font-medium text-[16px] leading-[125%] tracking-[-0.01em] active:border-accentColor focus:border-accentColor lg:hover:border-accentColor active:text-accentColor focus:text-accentColor lg:hover:text-accentColor"
           onClick={() => {
             setIsLoggedIn(!isLoggedIn);
           }}
@@ -27,53 +31,27 @@ export const Header = () => {
           Log In
         </button>
         <div className="container flex justify-between items-center">
-          <nav
-            className={`flex md:gap-[60px] items-center ${
-              isLoggedIn ? "lg:gap-[226px]" : "lg:gap-[130px]"
-            }`}
-          >
-            <Link
-              to="/"
-              className=" font-semibold text-[20px] leading-[120%] tracking-[-0.02em]"
-            >
-              <span className="text-accentColor font-bold text-[20px] leading-[120%] tracking-[-0.02em]">
-                psychologists.
-              </span>
-              services
-            </Link>
-
-            <ul className="flex md:gap-4 lg:gap-10 text-[16px] leading-[125%] tracking-[-0.01em]">
-              <li>
-                <NavLink
-                  to="/"
-                  className="inline-block py-[38px] active:text-accentColor lg:hover:text-accentColor transition duration-300"
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/psyhologists"
-                  className="inline-block py-[38px] active:text-accentColor lg:hover:text-accentColor transition duration-300"
-                >
-                  Psyhologists
-                </NavLink>
-              </li>
-              {isLoggedIn ? (
-                <li>
-                  <NavLink
-                    to="/favorites"
-                    className="inline-block py-[38px] active:text-accentColor lg:hover:text-accentColor transition duration-300"
-                  >
-                    Favorites
-                  </NavLink>
-                </li>
-              ) : null}
-            </ul>
-          </nav>
+          <MobileMenuContext.Provider value={false}>
+            {" "}
+            <NavMenu isLoggedIn={isLoggedIn} />
+          </MobileMenuContext.Provider>
           {isLoggedIn ? <UserMenu /> : <AuthNav />}
+          <button type="button" className="lg:hidden" onClick={toggleMenu}>
+            <Icon
+              id="menu"
+              size="40"
+              className="fill-accentColor stroke-transparent active:fill-transparent active:stroke-accentColor focus:fill-transparent focus:stroke-accentColor transition duration-3000"
+            />
+          </button>
         </div>
       </header>
+
+      <MobileMenu
+        backDropClass={isOpenMenu ? "scale-100" : "scale-0"}
+        menuClass={isOpenMenu ? "translate-x-0" : "translate-x-[100%]"}
+        isLoggedIn={isLoggedIn}
+        toggleMenu={toggleMenu}
+      />
     </>
   );
 };

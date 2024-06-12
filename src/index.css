@@ -85,7 +85,7 @@ body {
   @apply text-[14px] md:text-[16px] text-[#191a15] opacity-50 leading-[125%] mb-5 md:mb-10;
 }
 .active {
-  @apply relative after:content-[''''] after:h-2 after:w-2 after:rounded-[50%] after:bg-accentColor after:absolute after:bottom-[28px] after:left-[50%] after:translate-x-[-50%];
+  @apply relative after:content-[''''] after:h-2 after:w-2 after:rounded-[50%] after:bg-accentColor after:absolute after:bottom-0 lg:after:bottom-[28px] after:left-[50%] after:translate-x-[-50%];
 }
 .btn-primary {
   @apply text-[#fbfbfb] border-transparent bg-accentColor active:bg-accentHoverColor focus:bg-accentHoverColor lg:hover:bg-accentHoverColor rounded-[30px] transition duration-300;
