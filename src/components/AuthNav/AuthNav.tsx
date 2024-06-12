@@ -5,7 +5,11 @@ import { AuthForm, Modal } from "../../components";
 import { useModal } from "../../hooks";
 import { useMobileMenuContext } from "../../context";
 
-export const AuthNav = () => {
+interface AuthNavProps {
+  toggleMenu?: () => void;
+}
+
+export const AuthNav = ({ toggleMenu }: AuthNavProps) => {
   const isMobileMenu = useMobileMenuContext();
   const [mode, setMode] = useState("");
 
@@ -26,6 +30,7 @@ export const AuthNav = () => {
               isMobileMenu ? "w-full" : ""
             }`}
             onClick={() => {
+              toggleMenu && toggleMenu();
               setMode("signIn");
               toggleModal();
             }}
@@ -40,6 +45,7 @@ export const AuthNav = () => {
               isMobileMenu ? "w-full" : ""
             }`}
             onClick={() => {
+              toggleMenu && toggleMenu();
               setMode("signUp");
               toggleModal();
             }}
@@ -49,7 +55,11 @@ export const AuthNav = () => {
         </li>
       </ul>
       {isOpenModal && (
-        <Modal toggleModal={toggleModal}>
+        <Modal
+          className="py-12 px-8 md:p-12"
+          isOpen={isOpenModal}
+          toggleModal={toggleModal}
+        >
           <AuthForm mode={mode} toggleModal={toggleModal} />
         </Modal>
       )}

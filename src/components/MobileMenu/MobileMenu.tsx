@@ -5,6 +5,7 @@ import { useEscapeKeyClose } from "../../hooks";
 import { MobileMenuContext } from "../../context";
 
 interface MobileMenuProps {
+  isOpen: boolean;
   backDropClass: string;
   menuClass: string;
   isLoggedIn: boolean;
@@ -12,12 +13,14 @@ interface MobileMenuProps {
 }
 
 export const MobileMenu = ({
+  isOpen,
   backDropClass,
   menuClass,
   isLoggedIn,
   toggleMenu,
 }: MobileMenuProps) => {
-  useEscapeKeyClose(toggleMenu);
+  console.log("Menu");
+  useEscapeKeyClose(isOpen, toggleMenu);
 
   return (
     <MobileMenuContext.Provider value={true}>
@@ -29,7 +32,7 @@ export const MobileMenu = ({
           className={`bg-gradient-to-r from-firstGradColor to-secondGradColor flex flex-col gap-10 px-6 py-8 w-[300px] md:w-[350px] h-full font-medium text-[18px] absolute top-0 right-0 transition duration-500 ${menuClass}`}
         >
           <NavMenu isLoggedIn={isLoggedIn} toggleMenu={toggleMenu} />
-          {!isLoggedIn ? <AuthNav /> : <UserMenu />}
+          {!isLoggedIn ? <AuthNav toggleMenu={toggleMenu} /> : <UserMenu />}
         </div>
       </div>
     </MobileMenuContext.Provider>

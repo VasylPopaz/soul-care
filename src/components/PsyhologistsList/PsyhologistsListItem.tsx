@@ -32,12 +32,12 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
 
   return (
     <>
-      <li className="bg-[#fbfbfb] p-6 rounded-[24px]">
-        <div className="flex gap-6">
-          <div className="relative shrink-0 w-[120px] h-[120px] p-3 rounded-[30px] border-2 border-[#54be9633]">
-            <div className="absolute top-[9px] right-[14px]  w-[14px] h-[14px] rounded-[50%] bg-[#fbfbfb] after:absolute after:top-[50%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] after:content-[''''] after:inline-block after:h-[9px] after:w-[9px] after:rounded-[50%] after:bg-[#38cd3e]"></div>
+      <li className="bg-[#fbfbfb] p-6 rounded-[24px] w-full">
+        <div className="relative flex flex-col md:flex-row md gap-6">
+          <div className="relative shrink-0 sm-max:w-[90px] sm-max:h-[90px] w-[120px] h-[120px] sm-max:p-[10px] p-3 rounded-[30px] border-2 border-[#54be9633]">
+            <div className="absolute top-[9px] right-[14px] w-[14px] h-[14px] rounded-[50%] bg-[#fbfbfb] after:absolute after:top-[50%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] after:content-[''''] after:inline-block after:h-[9px] after:w-[9px] after:rounded-[50%] after:bg-[#38cd3e]"></div>
             <img
-              className="rounded-[15px]"
+              className="rounded-[15px] sm-max:w-[70px] sm-max:h-[70px]"
               src={avatar_url}
               alt={name}
               width={96}
@@ -45,29 +45,32 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
             />
           </div>
 
-          <div className="flex flex-wrap w-full gap-y-6">
+          <div className="flex flex-wrap md:w-[528px] lg:w-full gap-y-6">
             <div className="flex justify-between w-full">
               <div>
                 <p className="font-medium text-[16px] text-[#8a8a89] leading-[150%] mb-[8px]">
                   Psychologist
                 </p>
-                <h2 className="font-medium text-[24px] leading-[100%] text-[#191a15]">
+                <h2 className="font-medium text-[20px] lg:text-[24px] leading-[100%] text-[#191a15]">
                   {name}
                 </h2>
               </div>
 
-              <div className="flex gap-4 font-medium text-[16px] leading-[150%]">
+              <div className="absolute sm-max:top-[15px] sm-max:right-[-15px] top-[30px] right-0 md:static flex flex-col items-start md:items-stretch md:flex-row gap-4 font-medium text-[16px] leading-[150%]">
                 <div className="flex gap-2">
                   <Icon id="star" className="fill-[#ffc531]" size="22" />
                   <p> Rating: {rating}</p>
                 </div>
-                <span className="text-[#191a1533]">|</span>
-                <div className="flex gap-7 items-start">
+                <span className="hidden md:inline text-[#191a1533]">|</span>
+                <div className="flex gap-7">
                   <p>
                     Price / 1 hour:{" "}
                     <span className="text-[#38cd3e]">{price_per_hour}$</span>
                   </p>
-                  <button type="button" className="group">
+                  <button
+                    type="button"
+                    className="group absolute sm-max:top-[-25px] top-[-40px] sm-max:right-[5px] right-0 md:static"
+                  >
                     <Icon
                       id="heart"
                       className="fill-transparent stroke-black group-active:text-accentColor group-focus:text-accentColor group-hover:stroke-accentColor transition duration-300"
@@ -160,7 +163,11 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
         </div>
       </li>
       {isOpenModal && (
-        <Modal toggleModal={toggleModal} className="md:pt-14 md:pb-12 md:pr-9">
+        <Modal
+          isOpen={isOpenModal}
+          toggleModal={toggleModal}
+          className="px-9 pr-8 pt-14 py-10 md:pl-13 md:pr-10 lg:py-16 lg:pl-16 lg:pr-13"
+        >
           <AppointmentForm
             name={name}
             url={avatar_url}

@@ -32,7 +32,6 @@ export const Header = () => {
         </button>
         <div className="container flex justify-between items-center">
           <MobileMenuContext.Provider value={false}>
-            {" "}
             <NavMenu isLoggedIn={isLoggedIn} />
           </MobileMenuContext.Provider>
           {isLoggedIn ? <UserMenu /> : <AuthNav />}
@@ -47,6 +46,7 @@ export const Header = () => {
       </header>
 
       <MobileMenu
+        isOpen={isOpenMenu}
         backDropClass={isOpenMenu ? "scale-100" : "scale-0"}
         menuClass={isOpenMenu ? "translate-x-0" : "translate-x-[100%]"}
         isLoggedIn={isLoggedIn}

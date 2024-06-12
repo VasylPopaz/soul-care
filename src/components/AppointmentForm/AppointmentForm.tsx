@@ -52,11 +52,11 @@ export const AppointmentForm = ({
   };
 
   return (
-    <div className="scrollbar h-[85vh] pr-3">
-      <h2 className="title w-[400px]">
+    <div className="scrollbar h-[85vh] pr-[10px] md:pr-3">
+      <h2 className="title  w-full md:w-[400px]">
         Make an appointment with a psychologists
       </h2>
-      <p className="description w-[472px]">
+      <p className="description w-full md:w-[472px]">
         You are on the verge of changing your life for the better. Fill out the
         short form below to book your personal appointment with a professional
         psychologist. We guarantee confidentiality and respect for your privacy.
@@ -86,7 +86,7 @@ export const AppointmentForm = ({
           errors={errors}
           dirtyFields={dirtyFields}
         />
-        <div className="flex gap-2 w-[472px] mb-[18px]">
+        <div className="flex flex-col md:flex-row gap-2 w-full md:w-[472px] mb-[18px]">
           <InputField
             className="pl-[60px]"
             name="phone"

@@ -6,6 +6,7 @@ import { useEscapeKeyClose } from "../../hooks";
 import { handleClickOnBackdrop } from "../../helpers";
 
 interface ModalProps {
+  isOpen: boolean;
   className?: string;
   children: React.ReactNode;
   toggleModal: () => void;
@@ -13,8 +14,14 @@ interface ModalProps {
 
 const modalRoot = document.querySelector("#modalRoot")!;
 
-export const Modal = ({ className, children, toggleModal }: ModalProps) => {
-  useEscapeKeyClose(toggleModal);
+export const Modal = ({
+  isOpen,
+  className,
+  children,
+  toggleModal,
+}: ModalProps) => {
+  useEscapeKeyClose(isOpen, toggleModal);
+  console.log("Modal");
 
   return ReactDOM.createPortal(
     <div
@@ -22,7 +29,7 @@ export const Modal = ({ className, children, toggleModal }: ModalProps) => {
       onClick={(e) => handleClickOnBackdrop(toggleModal, e)}
     >
       <div
-        className={`relative rounded-[30px] bg-[#FBFBFB] p-8 md:p-12 sm-max:max-w-[300px] max-w-[330px] md:max-w-[700px] lg:max-w-[1180px] max-h-[95%] ${className}`}
+        className={`relative rounded-[30px] bg-[#FBFBFB] sm-max:max-w-[300px] max-w-[330px] md:max-w-[700px] lg:max-w-[1180px] max-h-[95%] ${className}`}
       >
         <button
           type="button"
