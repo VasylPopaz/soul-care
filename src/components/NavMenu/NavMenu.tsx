@@ -28,10 +28,10 @@ export const NavMenu = ({
     >
       <Link
         to="/"
-        className="font-semibold text-[20px] leading-[120%] tracking-[-0.02em] py-[16px] lg:py-[38px]"
+        className="font-semibold sm-max:text-[16px] text-[18px] md:text-[20px] leading-[120%] tracking-[-0.02em] py-[16px] lg:py-[38px]"
         onClick={handleClick}
       >
-        <span className="text-accentColor font-bold text-[20px] leading-[120%] tracking-[-0.02em]">
+        <span className="text-accentColor font-bold leading-[120%] tracking-[-0.02em]">
           psychologists.
         </span>
         services

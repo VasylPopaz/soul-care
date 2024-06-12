@@ -48,7 +48,7 @@ export const Filter = () => {
       </p>
       <div className="relative inline-block w-[226px] " ref={dropdownRef}>
         <div
-          className="flex justify-between items-center py-[16px] px-[18px] w-full bg-accentColor font-medium text-[#fbfbfb] text-[16px] leading-[125%] rounded-[14px] cursor-pointer hover:text-bg-card-color hover:bg-accentHoverColor transition duration-300"
+          className="flex justify-between items-center py-[16px] px-[18px] w-full bg-accentColor font-medium text-[#fbfbfb] text-[16px] leading-[125%] rounded-[14px] cursor-pointer  active:bg-accentHoverColor focus:bg-accentHoverColor  lg:hover:bg-accentHoverColor transition duration-300"
           onClick={handleToggle}
         >
           {sortBy}

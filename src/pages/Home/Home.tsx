@@ -8,7 +8,7 @@ import woman2x from "../../assets/images/woman2x.jpg";
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <section className="lg:h-[85vh] py-5 md:pt-[48px] lg:pt-[78px] md:pb-[40px] lg:pb-[100px] bg-gradient-to-r from-firstGradColor to-secondGradColor">
+    <section className="lg:h-[85vh] py-8 md:pt-[48px] lg:pt-[78px] md:pb-[40px] lg:pb-[100px] bg-gradient-to-r from-firstGradColor to-secondGradColor">
       <div className="container flex flex-col gap-4 md:flex-row md:gap-[10px] lg:gap-[125px] items-center">
         <div className="lg:text-left">
           <h1 className="font-semibold text-[32px] md:text-[48px] lg:text-[80px] leading-[102%] tracking-[-0.02em] mb-[20px]">
@@ -50,7 +50,7 @@ const Home = () => {
               <Icon className="fill-accentColor" id="check" size="17" />
             </div>
             <div>
-              <p className="text-[14px] text-[#a7dcc8]">
+              <p className="text-[14px] text-[#fbfbfb7f]">
                 Experienced psychologists
               </p>
               <p className="font-bold md:text-[18px] lg:text-[24px] text-[#fbfbfb]">

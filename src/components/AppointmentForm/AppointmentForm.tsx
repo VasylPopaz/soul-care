@@ -86,7 +86,7 @@ export const AppointmentForm = ({
           errors={errors}
           dirtyFields={dirtyFields}
         />
-        <div className="flex flex-col md:flex-row gap-2 w-full md:w-[472px] mb-[18px]">
+        <div className="flex flex-col md:flex-row gap-[18px] lg:gap-2 w-full md:w-[472px] mb-[18px]">
           <InputField
             className="pl-[60px]"
             name="phone"

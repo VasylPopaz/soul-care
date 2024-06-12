@@ -19,7 +19,6 @@ export const MobileMenu = ({
   isLoggedIn,
   toggleMenu,
 }: MobileMenuProps) => {
-  console.log("Menu");
   useEscapeKeyClose(isOpen, toggleMenu);
 
   return (
@@ -29,7 +28,7 @@ export const MobileMenu = ({
         onClick={(e) => handleClickOnBackdrop(toggleMenu, e)}
       >
         <div
-          className={`bg-gradient-to-r from-firstGradColor to-secondGradColor flex flex-col gap-10 px-6 py-8 w-[300px] md:w-[350px] h-full font-medium text-[18px] absolute top-0 right-0 transition duration-500 ${menuClass}`}
+          className={`bg-gradient-to-r from-firstGradColor to-secondGradColor flex flex-col gap-10 px-6 py-8 w-[300px] md:w-[350px] h-full font-medium text-[18px] absolute top-0 right-0 transition duration-300 ${menuClass}`}
         >
           <NavMenu isLoggedIn={isLoggedIn} toggleMenu={toggleMenu} />
           {!isLoggedIn ? <AuthNav toggleMenu={toggleMenu} /> : <UserMenu />}

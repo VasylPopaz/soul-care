@@ -33,9 +33,9 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
   return (
     <>
       <li className="bg-[#fbfbfb] p-6 rounded-[24px] w-full">
-        <div className="relative flex flex-col md:flex-row md gap-6">
-          <div className="relative shrink-0 sm-max:w-[90px] sm-max:h-[90px] w-[120px] h-[120px] sm-max:p-[10px] p-3 rounded-[30px] border-2 border-[#54be9633]">
-            <div className="absolute top-[9px] right-[14px] w-[14px] h-[14px] rounded-[50%] bg-[#fbfbfb] after:absolute after:top-[50%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] after:content-[''''] after:inline-block after:h-[9px] after:w-[9px] after:rounded-[50%] after:bg-[#38cd3e]"></div>
+        <div className="relative flex flex-col md:flex-row gap-2 lg:gap-6">
+          <div className="relative shrink-0 sm-max:w-[90px] sm-max:h-[90px] w-[120px] h-[120px] sm-max:p-[8px] p-[10px] rounded-[30px] border-2 border-[#54be9633]">
+            <div className="absolute sm-max:right-[12px] sm-max:top-[7px] top-[9px] right-[14px] sm-max:w-[12px] sm-max:h-[12px] w-[14px] h-[14px] rounded-[50%] bg-[#fbfbfb] after:absolute after:top-[50%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] after:content-[''''] after:inline-block after:h-[9px] after:w-[9px] after:rounded-[50%] after:bg-[#38cd3e]"></div>
             <img
               className="rounded-[15px] sm-max:w-[70px] sm-max:h-[70px]"
               src={avatar_url}
@@ -56,7 +56,7 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
                 </h2>
               </div>
 
-              <div className="absolute sm-max:top-[15px] sm-max:right-[-15px] top-[30px] right-0 md:static flex flex-col items-start md:items-stretch md:flex-row gap-4 font-medium text-[16px] leading-[150%]">
+              <div className="absolute sm-max:top-[15px] sm-max:right-[-15px] top-[30px] right-0 md:static flex flex-col items-start md:flex-row gap-4 font-medium text-[16px] leading-[150%]">
                 <div className="flex gap-2">
                   <Icon id="star" className="fill-[#ffc531]" size="22" />
                   <p> Rating: {rating}</p>

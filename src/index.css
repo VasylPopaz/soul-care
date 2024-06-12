@@ -13,7 +13,7 @@ html[data-theme="green"] {
 }
 html[data-theme="blue"] {
   --accent-color: #3470ff;
-  --light-accent-color: #707e9b;
+  --light-accent-color: #93a9d6;
   --accent-hover-color: #255ee8;
   --review-bg-color: #3470ff33;
   --first-grad-color: #fbfbfb;
@@ -21,10 +21,10 @@ html[data-theme="blue"] {
 }
 html[data-theme="orange"] {
   --accent-color: #fc832c;
-  --light-accent-color: #b09079;
+  --light-accent-color: #edb288;
   --accent-hover-color: #f37113;
   --review-bg-color: #fc832c33;
-  --irst-grad-color: #fbfbfb;
+  --first-grad-color: #fbfbfb;
   --second-grad-color: #fbf4ef;
 }
 /* -------------------------- */

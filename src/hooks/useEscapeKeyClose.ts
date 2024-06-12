@@ -9,12 +9,10 @@ export const useEscapeKeyClose = (isOpen: boolean, toggleModal: () => void) => {
         toggleModal();
       }
     };
-    console.log("hidden");
     document.addEventListener("keydown", handleEscape);
     document.body.style.overflow = "hidden";
 
     return () => {
-      console.log("auto");
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "auto";
     };

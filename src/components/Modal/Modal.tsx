@@ -21,7 +21,6 @@ export const Modal = ({
   toggleModal,
 }: ModalProps) => {
   useEscapeKeyClose(isOpen, toggleModal);
-  console.log("Modal");
 
   return ReactDOM.createPortal(
     <div
