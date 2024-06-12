@@ -26,7 +26,7 @@ export const MobileMenu = ({
         onClick={(e) => handleClickOnBackdrop(toggleMenu, e)}
       >
         <div
-          className={`flex flex-col gap-6 px-6 py-8 w-[300px] md:w-[350px] h-full bg-[#fbfbfb] absolute top-0 right-0 transition duration-500 ${menuClass}`}
+          className={`bg-gradient-to-r from-firstGradColor to-secondGradColor flex flex-col gap-10 px-6 py-8 w-[300px] md:w-[350px] h-full font-medium text-[18px] absolute top-0 right-0 transition duration-500 ${menuClass}`}
         >
           <NavMenu isLoggedIn={isLoggedIn} toggleMenu={toggleMenu} />
           {!isLoggedIn ? <AuthNav /> : <UserMenu />}

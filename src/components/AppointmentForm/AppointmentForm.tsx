@@ -52,7 +52,7 @@ export const AppointmentForm = ({
   };
 
   return (
-    <>
+    <div className="scrollbar h-[85vh] pr-3">
       <h2 className="title w-[400px]">
         Make an appointment with a psychologists
       </h2>
@@ -136,6 +136,6 @@ export const AppointmentForm = ({
           Send
         </button>
       </form>
-    </>
+    </div>
   );
 };

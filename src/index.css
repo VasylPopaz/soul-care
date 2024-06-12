@@ -5,6 +5,7 @@
 /* Themes */
 html[data-theme="green"] {
   --accent-color: #54be96;
+  --light-accent-color: #a6d2c1;
   --accent-hover-color: #36a379;
   --review-bg-color: #54be9633;
   --first-grad-color: #fbfbfb;
@@ -12,6 +13,7 @@ html[data-theme="green"] {
 }
 html[data-theme="blue"] {
   --accent-color: #3470ff;
+  --light-accent-color: #707e9b;
   --accent-hover-color: #255ee8;
   --review-bg-color: #3470ff33;
   --first-grad-color: #fbfbfb;
@@ -19,6 +21,7 @@ html[data-theme="blue"] {
 }
 html[data-theme="orange"] {
   --accent-color: #fc832c;
+  --light-accent-color: #b09079;
   --accent-hover-color: #f37113;
   --review-bg-color: #fc832c33;
   --irst-grad-color: #fbfbfb;
@@ -85,7 +88,7 @@ body {
   @apply text-[14px] md:text-[16px] text-[#191a15] opacity-50 leading-[125%] mb-5 md:mb-10;
 }
 .active {
-  @apply relative after:content-[''''] after:h-2 after:w-2 after:rounded-[50%] after:bg-accentColor after:absolute after:bottom-0 lg:after:bottom-[28px] after:left-[50%] after:translate-x-[-50%];
+  @apply relative after:content-[''''] after:h-2 after:w-2 after:rounded-[50%] after:bg-accentColor after:absolute after:bottom-[-2px] lg:after:bottom-[28px] after:left-[50%] after:translate-x-[-50%];
 }
 .btn-primary {
   @apply text-[#fbfbfb] border-transparent bg-accentColor active:bg-accentHoverColor focus:bg-accentHoverColor lg:hover:bg-accentHoverColor rounded-[30px] transition duration-300;
@@ -163,13 +166,14 @@ body {
 /* -------- */
 /* Scroll */
 .scrollbar {
-  padding-right: 50px; /* Установите нужное значение для отступа */
+  overflow: auto;
 }
 .scrollbar::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
 }
 .scrollbar::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--light-accent-color);
+  border-radius: 8px;
 }
 .scrollbar::-webkit-scrollbar-thumb {
   background: var(--accent-color);
@@ -177,7 +181,7 @@ body {
 }
 @supports not selector(::-webkit-scrollbar) {
   .scrollbar {
-    scrollbar-color: var(--accent-color) transparent;
+    scrollbar-color: var(--accent-color) var(--light-accent-color);
   }
 }
 /* -------- */

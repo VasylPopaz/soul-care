@@ -160,7 +160,7 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
         </div>
       </li>
       {isOpenModal && (
-        <Modal toggleModal={toggleModal} className="py-12">
+        <Modal toggleModal={toggleModal} className="md:pt-14 md:pb-12 md:pr-9">
           <AppointmentForm
             name={name}
             url={avatar_url}
