@@ -51,18 +51,18 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
                 <p className="font-medium text-[16px] text-[#8a8a89] leading-[150%] mb-[8px]">
                   Psychologist
                 </p>
-                <h2 className="font-medium text-[20px] lg:text-[24px] leading-[100%] text-[#191a15]">
+                <h2 className="font-medium text-[18px] lg:text-[24px] leading-[100%] text-[#191a15]">
                   {name}
                 </h2>
               </div>
 
-              <div className="absolute sm-max:top-[15px] sm-max:right-[-15px] top-[30px] right-0 md:static flex flex-col items-start md:flex-row gap-4 font-medium text-[16px] leading-[150%]">
-                <div className="flex gap-2">
+              <div className="absolute sm-max:top-[15px] sm-max:right-[-15px] top-[30px] right-0 md:static flex flex-col items-start md:flex-row md:gap-2 lg:gap-4 font-medium text-[16px] leading-[150%]">
+                <div className="flex gap-1 lg:gap-2">
                   <Icon id="star" className="fill-[#ffc531]" size="22" />
                   <p> Rating: {rating}</p>
                 </div>
                 <span className="hidden md:inline text-[#191a1533]">|</span>
-                <div className="flex gap-7">
+                <div className="flex gap-2 lg:gap-7">
                   <p>
                     Price / 1 hour:{" "}
                     <span className="text-[#38cd3e]">{price_per_hour}$</span>

@@ -17,11 +17,6 @@ export interface Psyhologist {
   about: string;
 }
 
-export interface Params {
-  page: number;
-  limit: number;
-}
 export interface PsyhologistsListProps {
   psyhologists: Psyhologist[];
-  params: Params;
 }

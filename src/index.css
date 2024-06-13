@@ -2,33 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Themes */
-html[data-theme="green"] {
-  --accent-color: #54be96;
-  --light-accent-color: #a6d2c1;
-  --accent-hover-color: #36a379;
-  --review-bg-color: #54be9633;
-  --first-grad-color: #fbfbfb;
-  --second-grad-color: #eff7f4;
-}
-html[data-theme="blue"] {
-  --accent-color: #3470ff;
-  --light-accent-color: #93a9d6;
-  --accent-hover-color: #255ee8;
-  --review-bg-color: #3470ff33;
-  --first-grad-color: #fbfbfb;
-  --second-grad-color: #eff3fb;
-}
-html[data-theme="orange"] {
-  --accent-color: #fc832c;
-  --light-accent-color: #edb288;
-  --accent-hover-color: #f37113;
-  --review-bg-color: #fc832c33;
-  --first-grad-color: #fbfbfb;
-  --second-grad-color: #fbf4ef;
-}
-/* -------------------------- */
-
 /* Fonts */
 @font-face {
   font-family: "Inter";
@@ -70,9 +43,57 @@ html[data-theme="orange"] {
   font-display: swap;
 }
 /* --------------- */
+
+/* Themes */
+html[data-theme="green"] {
+  --body-bg-color: #f3f3f3;
+  --primary-text-color: #191a15;
+  --sec-text-color: #8a8a89;
+  --accent-color: #54be96;
+  --light-accent-color: #a6d2c1;
+  --accent-hover-color: #36a379;
+  --review-bg-color: #54be9633;
+  --first-grad-color: #fbfbfb;
+  --second-grad-color: #eff7f4;
+}
+html[data-theme="blue"] {
+  --body-bg-color: #f3f3f3;
+  --primary-text-color: #191a15;
+  --sec-text-color: #8a8a89;
+  --accent-color: #3470ff;
+  --light-accent-color: #93a9d6;
+  --accent-hover-color: #255ee8;
+  --review-bg-color: #3470ff33;
+  --first-grad-color: #fbfbfb;
+  --second-grad-color: #eff3fb;
+}
+html[data-theme="orange"] {
+  --body-bg-color: #f3f3f3;
+  --primary-text-color: #191a15;
+  --sec-text-color: #8a8a89;
+  --accent-color: #fc832c;
+  --light-accent-color: #edb288;
+  --accent-hover-color: #f37113;
+  --review-bg-color: #fc832c33;
+  --first-grad-color: #fbfbfb;
+  --second-grad-color: #fbf4ef;
+}
+html[data-theme="dark"] {
+  --body-bg-color: #0c0c0c;
+  --primary-text-color: #e6e5ea;
+  --sec-text-color: #757576;
+  --accent-color: #2c986f;
+  --light-accent-color: #a6d2c1;
+  --accent-hover-color: #25624b;
+  --review-bg-color: #54be9633;
+  --first-grad-color: #040404;
+  --second-grad-color: #0d4e0d;
+}
+/* -------------------------- */
+
 body {
-  background-color: #f3f3f3;
-  color: #191a15;
+  background-color: var(--body-bg-color);
+  color: var(--primary-text-color);
   font-family: "Inter", sans-serif;
   font-weight: 400;
 }
@@ -82,10 +103,10 @@ body {
   }
 }
 .title {
-  @apply font-medium text-[30px] md:text-[40px] leading-[120%] tracking-[-0.02em] mb-3 md:mb-5;
+  @apply font-medium text-[30px] md:text-[40px] leading-[120%] tracking-[-0.02em] mb-3 lg:mb-5;
 }
 .description {
-  @apply text-[14px] md:text-[16px] text-[#191a15] opacity-50 leading-[125%] mb-5 md:mb-10;
+  @apply text-[14px] md:text-[16px] text-primaryTextColor opacity-50 leading-[125%] mb-5 lg:mb-10;
 }
 .active {
   @apply relative after:content-[''''] after:h-2 after:w-2 after:rounded-[50%] after:bg-accentColor after:absolute after:bottom-[-2px] lg:after:bottom-[28px] after:left-[50%] after:translate-x-[-50%];
@@ -108,7 +129,7 @@ body {
 }
 
 .react-datepicker__input-container input {
-  @apply px-[18px] py-4 rounded-[12px] border border-[#191a15] border-opacity-10 bg-transparent outline-none w-full hover:border-accentColor focus:border-accentColor placeholder:text-[#191a15] transition duration-300;
+  @apply px-[18px] py-4 rounded-[12px] border border-primaryTextColor border-opacity-10 bg-transparent outline-none w-[252px] md:w-[232px] hover:border-accentColor focus:border-accentColor placeholder:text-primaryTextColor transition duration-300;
 }
 .react-datepicker {
   @apply border-none p-4;
@@ -138,7 +159,7 @@ body {
   background-color: transparent !important;
 }
 .react-datepicker__time-list-item--selected {
-  color: #191a15 !important;
+  color: var(--primary-text-color) !important;
   background-color: transparent !important;
 }
 .react-datepicker__tab-loop {
@@ -146,6 +167,10 @@ body {
 }
 .react-datepicker__triangle {
   @apply hidden;
+}
+/* Toast */
+.Toastify__toast-theme--colored.Toastify__toast--info {
+  background-color: var(--accent-color);
 }
 /* Scroll DatePicker */
 .react-datepicker__time-list::-webkit-scrollbar {

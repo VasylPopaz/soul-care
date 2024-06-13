@@ -4,7 +4,11 @@ import { Icon } from "../../components";
 
 import { statuses } from "../../constants";
 
-export const Filter = () => {
+export const Filter = ({
+  onChange,
+}: {
+  onChange: (option: string) => void;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sortBy, setSortBy] = useState("Show all");
 
@@ -27,9 +31,10 @@ export const Filter = () => {
     handleToggle();
   };
 
-  const handleOptionClick = (label: string) => {
+  const handleOptionClick = (label: string, value: string) => {
     setIsOpen(false);
     setSortBy(label);
+    onChange(value);
   };
 
   const handleClickOutside = (e: MouseEvent) => {
@@ -43,7 +48,7 @@ export const Filter = () => {
 
   return (
     <div className="mb-[32px]">
-      <p className="font-medium text-[14px] text-[#8a8a89] leading-[129%] mb-[8px]">
+      <p className="font-medium text-[14px] text-secTextColor leading-[129%] mb-[8px]">
         Filters
       </p>
       <div className="relative inline-block w-[226px] " ref={dropdownRef}>
@@ -63,14 +68,14 @@ export const Filter = () => {
         </div>
         {isOpen && (
           <ul className="w-full py-[14px] px-[18px] bg-[#fff] rounded-[14px] overflow-hidden block absolute top-[60px] left-0 z-[1] space-y-[8px] shadow-custom-inset text-[16px] text-[#191a154c] leading-[125%]">
-            {statuses.map((item, index) => (
+            {statuses.map(({ label, value }, index) => (
               <li
                 key={index}
-                style={item === sortBy ? { color: "#191a15" } : {}}
+                style={label === sortBy ? { color: "#191a15" } : {}}
                 className="cursor-pointer hover:text-[#0404039a] transition duration-300"
-                onClick={() => handleOptionClick(item)}
+                onClick={() => handleOptionClick(label, value)}
               >
-                {item}
+                {label}
               </li>
             ))}
           </ul>

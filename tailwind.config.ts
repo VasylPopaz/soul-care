@@ -9,6 +9,8 @@ export default {
     },
     extend: {
       colors: {
+        primaryTextColor: "var(--primary-text-color)",
+        secTextColor: "var(--sec-text-color)",
         accentColor: "var(--accent-color)",
         accentHoverColor: "var(--accent-hover-color)",
         reviewBgColor: "var(--review-bg-color)",

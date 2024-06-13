@@ -52,8 +52,8 @@ export const AppointmentForm = ({
   };
 
   return (
-    <div className="scrollbar h-[75vh] pr-[10px] md:pr-3">
-      <h2 className="title  w-full md:w-[400px]">
+    <div className="scrollbar max-h-[80vh] pr-[10px] md:pr-3">
+      <h2 className="title w-full md:w-[400px]">
         Make an appointment with a psychologists
       </h2>
       <p className="description w-full md:w-[472px]">
@@ -61,7 +61,7 @@ export const AppointmentForm = ({
         short form below to book your personal appointment with a professional
         psychologist. We guarantee confidentiality and respect for your privacy.
       </p>
-      <div className="flex gap-[14px] mb-10">
+      <div className="flex gap-[14px] mb-6 lg:mb-10">
         <img
           src={url}
           alt={name}
@@ -70,7 +70,7 @@ export const AppointmentForm = ({
           className="rounded-[15px]"
         />
         <div className="flex flex-col justify-between">
-          <p className="font-medium text-[12px] text-[#8a8a89] leading-[133%]">
+          <p className="font-medium text-[12px] text-secTextColor leading-[133%]">
             Your psychologists
           </p>
           <h3 className="font-medium text-[16px] leading-[150%]">{name}</h3>
@@ -86,8 +86,9 @@ export const AppointmentForm = ({
           errors={errors}
           dirtyFields={dirtyFields}
         />
-        <div className="flex flex-col md:flex-row gap-[18px] lg:gap-2 w-full md:w-[472px] mb-[18px]">
+        <div className="flex flex-col md:flex-row gap-[18px] md:gap-2 w-full md:w-[472px] mb-[18px]">
           <InputField
+            divClass="md:w-[232px]"
             className="pl-[60px]"
             name="phone"
             placeholder=""
@@ -102,6 +103,7 @@ export const AppointmentForm = ({
             defaultValue={new Date()}
             render={({ field: { onChange, value } }) => (
               <InputField
+                divClass="md:w-[232px]"
                 tag="datepicker"
                 name="time"
                 placeholder=""
@@ -125,7 +127,7 @@ export const AppointmentForm = ({
         />
         <InputField
           tag="textarea"
-          divClass="mb-10"
+          divClass="mb-6 lg:mb-10"
           name="comment"
           placeholder="Comment"
           register={register as unknown as UseFormRegister<FieldValues>}
