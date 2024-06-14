@@ -67,12 +67,14 @@ export const Filter = ({
           />
         </div>
         {isOpen && (
-          <ul className="w-full py-[14px] px-[18px] bg-[#fff] rounded-[14px] overflow-hidden block absolute top-[60px] left-0 z-[1] space-y-[8px] shadow-custom-inset text-[16px] text-[#191a154c] leading-[125%]">
+          <ul className="w-full py-[14px] px-[18px] bg-thirdBgColor rounded-[14px] overflow-hidden block absolute top-[60px] left-0 z-[1] space-y-[8px] shadow-custom-inset text-[16px] text-color30 leading-[125%]">
             {statuses.map(({ label, value }, index) => (
               <li
                 key={index}
-                style={label === sortBy ? { color: "#191a15" } : {}}
-                className="cursor-pointer hover:text-[#0404039a] transition duration-300"
+                style={
+                  label === sortBy ? { color: "var(--primary-text-color)" } : {}
+                }
+                className="cursor-pointer hover:text-primaryTextColor transition duration-300"
                 onClick={() => handleOptionClick(label, value)}
               >
                 {label}

@@ -62,12 +62,12 @@ export const ThemeSwitcher = () => {
         />
       </div>
       {isOpen && (
-        <ul className="w-full py-2 px-4 bg-[#fff] rounded-[14px] overflow-hidden block absolute top-[35px] left-0 z-[1] space-y-[8px] shadow-custom-inset text-[16px] text-[#191a154c] leading-[125%]">
+        <ul className="w-full py-2 px-4 bg-thirdBgColor rounded-[14px] overflow-hidden block absolute top-[35px] left-0 z-[1] space-y-[8px] shadow-custom-inset text-[16px] text-aboutTextColor leading-[125%]">
           {themes.map((item, index) => (
             <li
               key={index}
               style={item === theme ? { color: "var(--accent-color)" } : {}}
-              className="w-full cursor-pointer hover:text-[#0404039a] transition duration-300"
+              className="w-full cursor-pointer hover:text-primaryTextColor transition duration-300"
               onClick={() => handleOptionClick(item)}
             >
               {item[0].toUpperCase() + item.slice(1)}

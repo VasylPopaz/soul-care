@@ -32,10 +32,10 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
 
   return (
     <>
-      <li className="bg-[#fbfbfb] p-6 rounded-[24px] w-full">
+      <li className="bg-secBgColor p-6 rounded-[24px] w-full">
         <div className="relative flex flex-col md:flex-row gap-2 lg:gap-6">
           <div className="relative shrink-0 sm-max:w-[90px] sm-max:h-[90px] w-[120px] h-[120px] sm-max:p-[8px] p-[10px] rounded-[30px] border-2 border-[#54be9633]">
-            <div className="absolute sm-max:right-[12px] sm-max:top-[7px] top-[9px] right-[14px] sm-max:w-[12px] sm-max:h-[12px] w-[14px] h-[14px] rounded-[50%] bg-[#fbfbfb] after:absolute after:top-[50%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] after:content-[''''] after:inline-block after:h-[9px] after:w-[9px] after:rounded-[50%] after:bg-[#38cd3e]"></div>
+            <div className="absolute sm-max:right-[12px] sm-max:top-[7px] top-[9px] right-[14px] sm-max:w-[12px] sm-max:h-[12px] w-[14px] h-[14px] rounded-[50%] bg-secBgColor after:absolute after:top-[50%] after:left-[50%] after:translate-x-[-50%] after:translate-y-[-50%] after:content-[''''] after:inline-block after:h-[7px] after:w-[7px] md:after:h-[9px] md:after:w-[9px] after:rounded-[50%] after:bg-[#38cd3e]"></div>
             <img
               className="rounded-[15px] sm-max:w-[70px] sm-max:h-[70px]"
               src={avatar_url}
@@ -51,7 +51,7 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
                 <p className="font-medium text-[16px] text-[#8a8a89] leading-[150%] mb-[8px]">
                   Psychologist
                 </p>
-                <h2 className="font-medium text-[18px] lg:text-[24px] leading-[100%] text-[#191a15]">
+                <h2 className="font-medium text-[18px] lg:text-[24px] leading-[100%]">
                   {name}
                 </h2>
               </div>
@@ -61,7 +61,7 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
                   <Icon id="star" className="fill-[#ffc531]" size="22" />
                   <p> Rating: {rating}</p>
                 </div>
-                <span className="hidden md:inline text-[#191a1533]">|</span>
+                <span className="hidden md:inline text-datePickerText">|</span>
                 <div className="flex gap-2 lg:gap-7">
                   <p>
                     Price / 1 hour:{" "}
@@ -73,7 +73,7 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
                   >
                     <Icon
                       id="heart"
-                      className="fill-transparent stroke-black group-active:text-accentColor group-focus:text-accentColor group-hover:stroke-accentColor transition duration-300"
+                      className="fill-transparent stroke-primaryTextColor group-active:text-accentColor group-focus:text-accentColor group-hover:stroke-accentColor transition duration-300"
                       size="26"
                     />
                   </button>
@@ -93,10 +93,11 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
               ].map(({ label, value }, index) => (
                 <li
                   key={index}
-                  className="rounded-[24px] px-[16px] py-[8px] bg-[#f3f3f3]"
+                  className="rounded-[24px] px-[16px] py-[8px] bg-bodyBgColor"
                 >
                   <p className="font-medium text-[16px] text-[#8a8a89] leading-[150%]">
-                    {label}: <span className="text-[#191a15]">{value}</span>
+                    {label}:{" "}
+                    <span className="text-primaryTextColor">{value}</span>
                   </p>
                 </li>
               ))}
@@ -104,7 +105,7 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
 
             <div>
               <p
-                className={`text-[16px] text-[#191a157f] leading-[125%] tracking-[-0.01em] ${
+                className={`text-[16px] text-aboutTextColor leading-[125%] tracking-[-0.01em] ${
                   isReadMore ? "mb-12" : "mb-[14px]"
                 }`}
               >
@@ -135,7 +136,7 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
                             </p>
                           </div>
                         </div>
-                        <p className="text-[14px] text-[#191a157f] leading-[125%]">
+                        <p className="text-[14px] text-aboutTextColor leading-[125%]">
                           {comment}
                         </p>
                       </li>

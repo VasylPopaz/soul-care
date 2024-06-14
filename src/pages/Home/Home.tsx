@@ -31,7 +31,7 @@ const Home = () => {
           </button>
         </div>
         <div className="relative">
-          <div className="flex justify-center items-center absolute top-[140px] lg:top-[190px] left-[-10px] md:left-[-35px] w-9 h-9 lg:w-[40px] lg:h-[40px] bg-[#4535AF] rounded-[10px] rotate-[-15deg]">
+          <div className="flex justify-center items-center absolute top-[140px] lg:top-[190px] left-[-10px] md:left-[-35px] w-9 h-9 lg:w-[40px] lg:h-[40px] bg-iconBgColor rounded-[10px] rotate-[-15deg]">
             <Icon
               className="fill-[#fbfbfb] rotate-[15deg]"
               id="quest"

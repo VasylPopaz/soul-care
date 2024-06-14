@@ -46,48 +46,88 @@
 
 /* Themes */
 html[data-theme="green"] {
+  --color-30: #191a154d;
   --body-bg-color: #f3f3f3;
+  --sec-bg-color: #fbfbfb;
+  --third-bg-color: #ffffff;
   --primary-text-color: #191a15;
   --sec-text-color: #8a8a89;
+  --about-text-color: #191a157f;
+  --border-color: #191a1519;
   --accent-color: #54be96;
   --light-accent-color: #a6d2c1;
   --accent-hover-color: #36a379;
   --review-bg-color: #54be9633;
   --first-grad-color: #fbfbfb;
   --second-grad-color: #eff7f4;
+  --date-picker-bg-color: #fff;
+  --date-picker-text-color: #191a154d;
+  --date-picker-active: #2c2d27;
+  --icon-stroke-color: #fbfbfb;
+  --icon-bg-color: #4535af;
 }
 html[data-theme="blue"] {
+  --color-30: #191a154d;
   --body-bg-color: #f3f3f3;
+  --sec-bg-color: #fbfbfb;
+  --third-bg-color: #ffffff;
   --primary-text-color: #191a15;
   --sec-text-color: #8a8a89;
+  --about-text-color: #191a157f;
+  --border-color: #191a1519;
   --accent-color: #3470ff;
   --light-accent-color: #93a9d6;
   --accent-hover-color: #255ee8;
   --review-bg-color: #3470ff33;
   --first-grad-color: #fbfbfb;
   --second-grad-color: #eff3fb;
+  --date-picker-bg-color: #fff;
+  --date-picker-text-color: #191a154d;
+  --date-picker-active: #2c2d27;
+  --icon-stroke-color: #fbfbfb;
+  --icon-bg-color: #54be96;
 }
 html[data-theme="orange"] {
+  --color-30: #191a154d;
   --body-bg-color: #f3f3f3;
+  --sec-bg-color: #fbfbfb;
+  --third-bg-color: #ffffff;
   --primary-text-color: #191a15;
   --sec-text-color: #8a8a89;
+  --about-text-color: #191a157f;
+  --border-color: #191a1519;
   --accent-color: #fc832c;
   --light-accent-color: #edb288;
   --accent-hover-color: #f37113;
   --review-bg-color: #fc832c33;
   --first-grad-color: #fbfbfb;
   --second-grad-color: #fbf4ef;
+  --date-picker-bg-color: #fff;
+  --date-picker-text-color: #191a154d;
+  --date-picker-active: #2c2d27;
+  --icon-stroke-color: #fbfbfb;
+  --icon-bg-color: #54be96;
 }
 html[data-theme="dark"] {
+  --color-30: #e2e4da4d;
   --body-bg-color: #0c0c0c;
+  --sec-bg-color: #232222c3;
+  --third-bg-color: #000000;
   --primary-text-color: #e6e5ea;
   --sec-text-color: #757576;
+  --about-text-color: #e6e5ea80;
+  --border-color: #e6e5ea19;
   --accent-color: #2c986f;
   --light-accent-color: #a6d2c1;
   --accent-hover-color: #25624b;
   --review-bg-color: #54be9633;
   --first-grad-color: #040404;
   --second-grad-color: #0d4e0d;
+  --date-picker-bg-color: #171717;
+  --date-picker-text-color: #8a8a869d;
+  --date-picker-active: #eeefe7;
+  --icon-stroke-color: #302f2f;
+  --icon-bg-color: #54be96;
 }
 /* -------------------------- */
 
@@ -115,7 +155,7 @@ body {
   @apply text-[#fbfbfb] border-transparent bg-accentColor active:bg-accentHoverColor focus:bg-accentHoverColor lg:hover:bg-accentHoverColor rounded-[30px] transition duration-300;
 }
 .btn-secondary {
-  @apply bg-transparent border border-[#191a1533]  active:border-accentColor focus:border-accentColor lg:hover:border-accentColor active:text-accentColor focus:text-accentColor lg:hover:text-accentColor rounded-[30px] transition duration-300;
+  @apply bg-transparent border border-borderColor active:border-accentColor focus:border-accentColor lg:hover:border-accentColor active:text-accentColor focus:text-accentColor lg:hover:text-accentColor rounded-[30px] transition duration-300;
 }
 
 .react-datepicker-popper {
@@ -129,10 +169,10 @@ body {
 }
 
 .react-datepicker__input-container input {
-  @apply px-[18px] py-4 rounded-[12px] border border-primaryTextColor border-opacity-10 bg-transparent outline-none w-[252px] md:w-[232px] hover:border-accentColor focus:border-accentColor placeholder:text-primaryTextColor transition duration-300;
+  @apply px-[18px] py-4 rounded-[12px] border border-borderColor bg-transparent outline-none w-[252px] md:w-[232px] hover:border-accentColor focus:border-accentColor placeholder:text-primaryTextColor transition duration-300;
 }
 .react-datepicker {
-  @apply border-none p-4;
+  @apply border-none p-4 bg-datePickerBgColor;
 }
 .react-datepicker__time-container {
   @apply w-[151px] font-medium text-[16px] leading-[125%];
@@ -140,14 +180,17 @@ body {
 .datepicker-time__header {
   @apply font-medium text-[16px] leading-[125%];
 }
-.react-datepicker__time {
-  @apply border-none;
+.react-datepicker__time-container .react-datepicker__time {
+  @apply border-none bg-datePickerBgColor;
+}
+.react-datepicker-time__header {
+  @apply text-primaryTextColor;
 }
 .react-datepicker__header {
-  @apply p-0 mb-4 text-left bg-[#fff] border-none;
+  @apply p-0 mb-4 text-left bg-datePickerBgColor border-none;
 }
 .react-datepicker__time-list {
-  @apply font-medium text-[16px] text-[#191a154d] leading-[150%] max-h-[154px] overflow-auto;
+  @apply font-medium text-[16px] text-datePickerText leading-[150%] max-h-[154px] overflow-auto;
 }
 .react-datepicker__time-list-item {
   @apply transition duration-300;
@@ -155,7 +198,7 @@ body {
 .react-datepicker__time-list-item:hover,
 .react-datepicker__time-list-item:focus,
 .react-datepicker__time-list-item:active {
-  color: #2c2d27;
+  color: var(--date-picker-active) !important;
   background-color: transparent !important;
 }
 .react-datepicker__time-list-item--selected {

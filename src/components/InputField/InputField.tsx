@@ -76,7 +76,7 @@ export const InputField = ({
           placeholder=""
           defaultValue={defaultValue}
           onKeyDown={name === "phone" ? (e) => handleKeyDown(e) : () => {}}
-          className={`group-input px-[18px] py-4 rounded-[12px] border border-[#191a15] border-opacity-10 bg-transparent outline-none w-full hover:border-accentColor focus:border-accentColor placeholder:text-[#191a15] transition duration-300 ${className}`}
+          className={`group-input px-[18px] py-4 rounded-[12px] border border-borderColor bg-transparent outline-none w-full hover:border-accentColor focus:border-accentColor placeholder:text-primaryTextColor transition duration-300 ${className}`}
           autoComplete="on"
         />
       ) : tag === "textarea" ? (
@@ -85,7 +85,7 @@ export const InputField = ({
             id={name}
             {...register(name, { onChange: handleInputChange })}
             defaultValue={defaultValue}
-            className="px-[18px] py-4 text-[16px] leading-[125%] rounded-[12px] border border-[#191a15] border-opacity-10 bg-transparent outline-none w-full h-[116px] hover:border-accentColor focus:border-accentColor placeholder:text-[#191a15] transition duration-300 resize-none align-top scrollbar"
+            className="px-[18px] py-4 text-[16px] leading-[125%] rounded-[12px] border border-borderColor bg-transparent outline-none w-full h-[116px] hover:border-accentColor focus:border-accentColor placeholder:text-primaryTextColor transition duration-300 resize-none align-top scrollbar"
           />
         </div>
       ) : (
@@ -104,14 +104,14 @@ export const InputField = ({
           <Icon
             id="clock"
             size="20"
-            className="absolute top-[50%] right-[20px] translate-y-[-50%] fill-none stroke-[#191a15]"
+            className="absolute top-[50%] right-[20px] translate-y-[-50%] fill-none stroke-primaryTextColor"
             onClick={handleIconClick}
           />
         </>
       )}
       {placeholder && (
         <div
-          className={`px-[4px] absolute top-[17px] left-[19px] bg-[#fbfbfb] transform transition-transform 
+          className={`px-[4px] absolute top-[17px] left-[19px] bg-firstGradColor transform transition-transform 
     group-focus-within:translate-y-[-28px] ${
       isFilled ? "translate-y-[-28px]" : ""
     }`}
@@ -123,13 +123,13 @@ export const InputField = ({
         <button type="button" onClick={() => setShowPass(!showPass)}>
           <Icon
             id={`${showPass ? "eye" : "eye-off"}`}
-            className="stroke-black fill-white  absolute top-[20px] right-[18px]"
+            className="stroke-iconStrokeColor fill-primaryTextColor absolute top-[20px] right-[18px]"
             size="20"
           />
         </button>
       )}
       {(errors[name]?.message && dirtyFields[name]) || errors[name]?.message ? (
-        <p className="text-red-700 text-[10px] md:text-[12px] bg-[#fbfbfb] absolute bottom-[-9px] left-[12px] px-[4px] rounded-[18px]">
+        <p className="text-red-700 text-[10px] md:text-[12px] bg-firstGradColor absolute bottom-[-9px] left-[12px] px-[4px] rounded-[18px]">
           <>{errors[name]?.message}</>
         </p>
       ) : null}
