@@ -65,7 +65,7 @@ const Home = () => {
             alt="Woman"
             width={464}
             height={526}
-            className="sm-max:w-[280px] w-[339px] md:w-[290px] lg:w-[526px] rounded-[10px]"
+            className="sm-max:w-[280px] w-[339px] md:w-[290px] lg:w-[526px] lg:max-w-[65vh] rounded-[10px]"
           />
         </div>
       </div>

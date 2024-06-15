@@ -234,7 +234,10 @@ body {
 /* -------- */
 /* Scroll */
 .scrollbar {
+  /* scrollbar-width: thin;
+  scrollbar-color: var(--light-accent-color) var(--accent-color); */
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
 .scrollbar::-webkit-scrollbar {
