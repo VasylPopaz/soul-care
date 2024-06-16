@@ -33,7 +33,7 @@ export const Modal = ({
         <button
           type="button"
           onClick={toggleModal}
-          className="absolute top-7 right-7"
+          className="absolute top-5 right-4 md:top-7 md:right-7"
         >
           <Icon id="close" className="stroke-primaryTextColor" size="28" />
         </button>

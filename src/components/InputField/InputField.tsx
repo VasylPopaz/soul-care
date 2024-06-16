@@ -80,14 +80,12 @@ export const InputField = ({
           autoComplete="on"
         />
       ) : tag === "textarea" ? (
-        <div className="rounded-[12px] overflow-hidden">
-          <textarea
-            id={name}
-            {...register(name, { onChange: handleInputChange })}
-            defaultValue={defaultValue}
-            className="px-[18px] py-4 text-[16px] leading-[125%] rounded-[12px] border border-borderColor bg-transparent outline-none w-full h-[116px] hover:border-accentColor focus:border-accentColor placeholder:text-primaryTextColor transition duration-300 resize-none align-top scrollbar"
-          />
-        </div>
+        <textarea
+          id={name}
+          {...register(name, { onChange: handleInputChange })}
+          defaultValue={defaultValue}
+          className="px-[18px] py-4 text-[16px] leading-[125%] rounded-[12px] border border-borderColor bg-transparent outline-none w-full h-[116px] hover:border-accentColor focus:border-accentColor placeholder:text-primaryTextColor transition duration-300 resize-none align-top scrollbar "
+        />
       ) : (
         <>
           <DatePicker
@@ -104,7 +102,7 @@ export const InputField = ({
           <Icon
             id="clock"
             size="20"
-            className="absolute top-[50%] right-[20px] translate-y-[-50%] fill-none stroke-primaryTextColor"
+            className="absolute top-[50%] right-[20px] translate-y-[-50%] fill-none stroke-primaryTextColor group-hover:stroke-accentColor group-focus:stroke-accentColor transition duration-300"
             onClick={handleIconClick}
           />
         </>
@@ -123,7 +121,7 @@ export const InputField = ({
         <button type="button" onClick={() => setShowPass(!showPass)}>
           <Icon
             id={`${showPass ? "eye" : "eye-off"}`}
-            className="stroke-iconStrokeColor fill-primaryTextColor absolute top-[20px] right-[18px]"
+            className="stroke-iconStrokeColor fill-iconFillColor absolute top-[20px] right-[18px]"
             size="20"
           />
         </button>

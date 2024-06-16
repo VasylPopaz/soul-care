@@ -63,7 +63,8 @@ html[data-theme="green"] {
   --date-picker-bg-color: #fff;
   --date-picker-text-color: #191a154d;
   --date-picker-active: #2c2d27;
-  --icon-stroke-color: #fbfbfb;
+  --icon-stroke-color: #191a15;
+  --icon-fill-color: transparent;
   --icon-bg-color: #4535af;
 }
 html[data-theme="blue"] {
@@ -84,7 +85,8 @@ html[data-theme="blue"] {
   --date-picker-bg-color: #fff;
   --date-picker-text-color: #191a154d;
   --date-picker-active: #2c2d27;
-  --icon-stroke-color: #fbfbfb;
+  --icon-stroke-color: #191a15;
+  --icon-fill-color: transparent;
   --icon-bg-color: #54be96;
 }
 html[data-theme="orange"] {
@@ -105,7 +107,8 @@ html[data-theme="orange"] {
   --date-picker-bg-color: #fff;
   --date-picker-text-color: #191a154d;
   --date-picker-active: #2c2d27;
-  --icon-stroke-color: #fbfbfb;
+  --icon-stroke-color: #191a15;
+  --icon-fill-color: transparent;
   --icon-bg-color: #54be96;
 }
 html[data-theme="dark"] {
@@ -127,6 +130,7 @@ html[data-theme="dark"] {
   --date-picker-text-color: #8a8a869d;
   --date-picker-active: #eeefe7;
   --icon-stroke-color: #302f2f;
+  --icon-fill-color: transparent;
   --icon-bg-color: #54be96;
 }
 /* -------------------------- */
@@ -246,6 +250,7 @@ body {
 .scrollbar::-webkit-scrollbar-track {
   background: var(--light-accent-color);
   border-radius: 8px;
+  margin-block: 5px;
 }
 .scrollbar::-webkit-scrollbar-thumb {
   background: var(--accent-color);

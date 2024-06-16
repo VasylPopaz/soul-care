@@ -26,6 +26,7 @@ export default {
         datePickerText: "var(--date-picker-text-color)",
         datePickerActive: "var(--date-picker-active)",
         iconStrokeColor: "var(--icon-stroke-color)",
+        iconFillColor: "var(--icon-fill-color)",
         iconBgColor: "var(--icon-bg-color)",
       },
       fontFamily: {

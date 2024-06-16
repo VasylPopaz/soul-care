@@ -1,29 +1,19 @@
 export const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
   const { key, target } = e;
   const value = (target as HTMLInputElement).value;
+  const allowedKeys = new Set([
+    "Backspace",
+    "Delete",
+    "ArrowLeft",
+    "ArrowRight",
+    "Tab",
+    "Home",
+    "End",
+  ]);
 
   if (
-    !/[0-9]/.test(key) &&
-    key !== "Backspace" &&
-    key !== "Delete" &&
-    key !== "ArrowLeft" &&
-    key !== "ArrowRight" &&
-    key !== "Tab" &&
-    key !== "Home" &&
-    key !== "End"
-  ) {
-    e.preventDefault();
-  }
-
-  if (
-    value.length >= 9 &&
-    key !== "Backspace" &&
-    key !== "Delete" &&
-    key !== "ArrowLeft" &&
-    key !== "ArrowRight" &&
-    key !== "Tab" &&
-    key !== "Home" &&
-    key !== "End"
+    (!/[0-9]/.test(key) && !allowedKeys.has(key)) ||
+    (value.length >= 9 && !allowedKeys.has(key))
   ) {
     e.preventDefault();
   }

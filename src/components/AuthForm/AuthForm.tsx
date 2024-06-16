@@ -1,5 +1,8 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import {
   FieldValues,
   SubmitHandler,
@@ -7,6 +10,7 @@ import {
   useForm,
 } from "react-hook-form";
 
+import { auth } from "../../firebase";
 import { InputField } from "../../components";
 
 import { signInSchema, signUpSchema } from "../../schemas";
@@ -33,8 +37,11 @@ export const AuthForm = ({ mode, toggleModal }: AuthFormProps) => {
     resolver: yupResolver(mode === "signIn" ? signInSchema : signUpSchema),
   });
 
-  const onSubmit: SubmitHandler<FormData> = (date) => {
+  const onSubmit: SubmitHandler<FormData> = async (date) => {
     console.log(date);
+    mode === "signIn"
+      ? await signInWithEmailAndPassword(auth, date.email, date.password)
+      : await createUserWithEmailAndPassword(auth, date.email, date.password);
     toggleModal();
     reset();
   };

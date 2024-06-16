@@ -167,7 +167,7 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
         <Modal
           isOpen={isOpenModal}
           toggleModal={toggleModal}
-          className="px-9 pr-8 pt-14 py-10 md:pl-13 md:pr-10 lg:py-16 lg:pl-16 lg:pr-13"
+          className="pl-8 pr-[28px] pt-14 py-10 md:pl-[42px] md:pr-10 lg:py-16 lg:pl-16 lg:pr-[40px]"
         >
           <AppointmentForm
             name={name}
