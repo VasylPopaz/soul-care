@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { Icon } from "../../components";
 
-import { statuses } from "../../constants";
+import { psychologistFilters } from "../../constants";
 
 export const Filter = ({
   onChange,
@@ -68,7 +68,7 @@ export const Filter = ({
         </div>
         {isOpen && (
           <ul className="w-full py-[14px] px-[18px] bg-thirdBgColor rounded-[14px] overflow-hidden block absolute top-[60px] left-0 z-[1] space-y-[8px] shadow-custom-inset text-[16px] text-color30 leading-[125%]">
-            {statuses.map(({ label, value }, index) => (
+            {psychologistFilters.map(({ label, value }, index) => (
               <li
                 key={index}
                 style={

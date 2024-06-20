@@ -20,7 +20,12 @@ export const App = () => {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
-      <ToastContainer autoClose={2500} transition={Zoom} theme="colored" />
+      <ToastContainer
+        autoClose={2500}
+        transition={Zoom}
+        theme="colored"
+        style={{ zIndex: 999 }}
+      />
     </>
   );
 };

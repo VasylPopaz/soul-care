@@ -1,4 +1,4 @@
-export const statuses = [
+export const psychologistFilters = [
   { label: "A to Z", value: "name=true" },
   { label: "Z to A", value: "name=false" },
   { label: "Less than 10$", value: "price_per_hour=true" },

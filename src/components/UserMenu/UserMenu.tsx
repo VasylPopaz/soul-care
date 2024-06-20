@@ -1,5 +1,6 @@
 import { Icon } from "../../components";
 
+import { signoutUser } from "../../api";
 import { useMobileMenuContext } from "../../context";
 
 export const UserMenu = () => {
@@ -33,6 +34,7 @@ export const UserMenu = () => {
         className={`btn-secondary py-[14px] px-[40px] font-medium text-[16px] leading-[125%] tracking-[-0.01em] ${
           isMobileMenu ? "w-full" : ""
         }`}
+        onClick={signoutUser}
       >
         Log Out
       </button>

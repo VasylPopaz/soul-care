@@ -1,19 +1,16 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import {
   FieldValues,
   SubmitHandler,
   UseFormRegister,
   useForm,
 } from "react-hook-form";
 
-import { auth } from "../../firebase";
 import { InputField } from "../../components";
 
 import { signInSchema, signUpSchema } from "../../schemas";
+import { signInUser, signUpUser } from "../../api";
+import { toast } from "react-toastify";
 
 interface FormData {
   name?: string;
@@ -37,13 +34,20 @@ export const AuthForm = ({ mode, toggleModal }: AuthFormProps) => {
     resolver: yupResolver(mode === "signIn" ? signInSchema : signUpSchema),
   });
 
-  const onSubmit: SubmitHandler<FormData> = async (date) => {
-    console.log(date);
-    mode === "signIn"
-      ? await signInWithEmailAndPassword(auth, date.email, date.password)
-      : await createUserWithEmailAndPassword(auth, date.email, date.password);
-    toggleModal();
-    reset();
+  const onSubmit: SubmitHandler<FormData> = async ({
+    name,
+    email,
+    password,
+  }) => {
+    try {
+      mode === "signIn"
+        ? await signInUser(email, password)
+        : await signUpUser(name ?? "", password, email);
+      toggleModal();
+      reset();
+    } catch (error) {
+      toast.error(error instanceof Error && error.message);
+    }
   };
 
   return (
