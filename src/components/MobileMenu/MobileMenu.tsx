@@ -1,14 +1,13 @@
 import { AuthNav, NavMenu, UserMenu } from "../../components";
 
 import { handleClickOnBackdrop } from "../../helpers";
-import { useEscapeKeyClose } from "../../hooks";
+import { useEscapeKeyClose, useUser } from "../../hooks";
 import { MobileMenuContext } from "../../context";
 
 interface MobileMenuProps {
   isOpen: boolean;
   backDropClass: string;
   menuClass: string;
-  isLoggedIn: boolean;
   toggleMenu: () => void;
 }
 
@@ -16,9 +15,10 @@ export const MobileMenu = ({
   isOpen,
   backDropClass,
   menuClass,
-  isLoggedIn,
   toggleMenu,
 }: MobileMenuProps) => {
+  const { currentUser } = useUser();
+
   useEscapeKeyClose(isOpen, toggleMenu);
 
   return (
@@ -30,8 +30,12 @@ export const MobileMenu = ({
         <div
           className={`bg-gradient-to-r from-firstGradColor to-secondGradColor flex flex-col gap-10 px-6 py-8 w-[300px] md:w-[350px] h-full font-medium text-[18px] absolute top-0 right-0 transition duration-300 ${menuClass}`}
         >
-          <NavMenu isLoggedIn={isLoggedIn} toggleMenu={toggleMenu} />
-          {!isLoggedIn ? <AuthNav toggleMenu={toggleMenu} /> : <UserMenu />}
+          <NavMenu toggleMenu={toggleMenu} />
+          {!currentUser ? (
+            <AuthNav toggleMenu={toggleMenu} />
+          ) : (
+            <UserMenu toggleMenu={toggleMenu} />
+          )}
         </div>
       </div>
     </MobileMenuContext.Provider>

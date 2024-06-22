@@ -1,17 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 
 import { useMobileMenuContext } from "../../context";
+import { useUser } from "../../hooks";
 
 interface NavMenuProps {
-  isLoggedIn: boolean;
   toggleMenu?: () => void;
 }
 
-export const NavMenu = ({
-  isLoggedIn,
+export const NavMenu = ({ toggleMenu }: NavMenuProps) => {
+  const { currentUser } = useUser();
 
-  toggleMenu,
-}: NavMenuProps) => {
   const isMobileMenu = useMobileMenuContext();
 
   const handleClick = () => {
@@ -24,7 +22,7 @@ export const NavMenu = ({
     <nav
       className={`flex gap-10 lg:gap-[60px] items-center ${
         isMobileMenu ? "flex-col" : ""
-      } ${isLoggedIn ? "lg:gap-[226px]" : "lg:gap-[130px]"}`}
+      } ${currentUser ? "lg:gap-[226px]" : "lg:gap-[130px]"}`}
     >
       <Link
         to="/"
@@ -46,7 +44,7 @@ export const NavMenu = ({
           { route: "/psyhologists", label: "Psyhologists" },
           { route: "/favorites", label: "Favorites" },
         ].map(({ route, label }, index) => {
-          if (!isLoggedIn && label === "Favorites") {
+          if (!currentUser && label === "Favorites") {
             return null;
           }
           return (

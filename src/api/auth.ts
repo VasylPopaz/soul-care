@@ -4,7 +4,9 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+
 import { auth } from "../firebase";
+import { createUser } from "./users";
 
 export const signUpUser = async (
   name: string,
@@ -22,8 +24,7 @@ export const signUpUser = async (
     await updateProfile(user, {
       displayName: name,
     });
-
-    console.log("User registered successfully with name:", name);
+    await createUser(user.uid, { name, email });
   } catch (e) {
     throw new Error(`An account with email address ${email} already exists.`);
   }
@@ -31,8 +32,7 @@ export const signUpUser = async (
 
 export const signInUser = async (email: string, password: string) => {
   try {
-    const user = await signInWithEmailAndPassword(auth, email, password);
-    console.log(user);
+    await signInWithEmailAndPassword(auth, email, password);
   } catch (e) {
     throw new Error("Email or password is incorrect.");
   }
@@ -44,10 +44,4 @@ export const signoutUser = async () => {
   } catch (e) {
     throw new Error("Something went wrong. Please try again later.");
   }
-};
-
-export const getCurrentUser = () => {
-  const user = auth.currentUser;
-
-  return user;
 };

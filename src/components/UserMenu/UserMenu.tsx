@@ -2,9 +2,21 @@ import { Icon } from "../../components";
 
 import { signoutUser } from "../../api";
 import { useMobileMenuContext } from "../../context";
+import { useUser } from "../../hooks";
 
-export const UserMenu = () => {
+interface UserMenuProps {
+  toggleMenu?: () => void;
+}
+
+export const UserMenu = ({ toggleMenu }: UserMenuProps) => {
+  const { currentUser } = useUser();
+
   const isMobileMenu = useMobileMenuContext();
+
+  const handleLogOut = () => {
+    toggleMenu && toggleMenu();
+    signoutUser();
+  };
 
   return (
     <div
@@ -25,7 +37,7 @@ export const UserMenu = () => {
             isMobileMenu ? "text-center max-w-[240px] break-words" : ""
           }`}
         >
-          User
+          {currentUser?.displayName}
         </p>
       </div>
 
@@ -34,7 +46,7 @@ export const UserMenu = () => {
         className={`btn-secondary py-[14px] px-[40px] font-medium text-[16px] leading-[125%] tracking-[-0.01em] ${
           isMobileMenu ? "w-full" : ""
         }`}
-        onClick={signoutUser}
+        onClick={handleLogOut}
       >
         Log Out
       </button>

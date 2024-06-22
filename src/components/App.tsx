@@ -3,14 +3,20 @@ import { lazy } from "react";
 import { ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { SharedLayout } from "../components";
+import { Loader, SharedLayout } from "../components";
+
+import { useUser } from "../hooks";
 
 const Home = lazy(() => import("../pages/Home/Home"));
 const Psyhologists = lazy(() => import("../pages/Psyhologists/Psyhologists"));
 const Favorites = lazy(() => import("../pages/Favorites/Favorites"));
 
 export const App = () => {
-  return (
+  const { isLoading } = useUser();
+
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>

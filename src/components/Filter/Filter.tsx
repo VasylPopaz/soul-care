@@ -4,11 +4,7 @@ import { Icon } from "../../components";
 
 import { psychologistFilters } from "../../constants";
 
-export const Filter = ({
-  onChange,
-}: {
-  onChange: (option: string) => void;
-}) => {
+export const Filter = ({ onChange }: { onChange: (value: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sortBy, setSortBy] = useState("Show all");
 

@@ -5,6 +5,7 @@ export interface PsyhologistReview {
 }
 
 export interface Psyhologist {
+  _id: string;
   id?: string;
   name: string;
   avatar_url: string;

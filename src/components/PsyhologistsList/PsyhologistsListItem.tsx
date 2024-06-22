@@ -3,14 +3,17 @@ import { useState } from "react";
 import { AppointmentForm, Icon, Modal } from "../../components";
 
 import { Psyhologist } from "../../types";
-import { useModal } from "../../hooks";
+import { useModal, useUser } from "../../hooks";
 
 interface PsyhologistsListItemProps {
   item: Psyhologist;
+  handleFavClick: (id: string) => void;
+  favorites: string[];
 }
 
 export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
   item: {
+    _id,
     name,
     avatar_url,
     rating,
@@ -22,7 +25,10 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
     reviews,
     about,
   },
+  handleFavClick,
+  favorites,
 }) => {
+  const { currentUser } = useUser();
   const [isReadMore, setIsReadMore] = useState(false);
   const [isOpenModal, toggleModal] = useModal();
 
@@ -70,10 +76,15 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
                   <button
                     type="button"
                     className="group absolute sm-max:top-[-25px] top-[-40px] sm-max:right-[5px] right-0 md:static"
+                    onClick={() => handleFavClick(_id)}
                   >
                     <Icon
                       id="heart"
-                      className="fill-transparent stroke-primaryTextColor group-active:text-accentColor group-focus:text-accentColor group-hover:stroke-accentColor transition duration-300"
+                      className={` ${
+                        favorites?.includes(_id) && currentUser
+                          ? "fill-accentColor stroke-transparent"
+                          : "fill-transparent stroke-primaryTextColor "
+                      } group-active:text-accentColor group-focus:text-accentColor group-hover:stroke-accentColor transition duration-300`}
                       size="26"
                     />
                   </button>

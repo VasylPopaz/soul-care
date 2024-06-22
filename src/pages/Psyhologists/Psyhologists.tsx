@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { PsyhologistsList, Filter, LoadMoreButton } from "../../components";
+import {
+  PsyhologistsList,
+  Filter,
+  LoadMoreButton,
+  Loader,
+} from "../../components";
 
-import { getSortedItems } from "../../helpers";
 import { getPsyhologists, getTotalPsychologists } from "../../api";
 import { Psyhologist } from "../../types";
+import { getSortedItems } from "../../helpers";
 
 const Psyhologists = () => {
   const [psyhologists, setPsyhologists] = useState<Psyhologist[]>([]);
@@ -51,12 +56,14 @@ const Psyhologists = () => {
 
   const handleFilterChange = (value: string) => {
     setSortBy(value);
+    // setPage(1);
+    // getSortedPsyhologists(value, page);
   };
 
-  if (isLoading && !psyhologists.length) return <h1>Loading</h1>;
+  if (isLoading && !psyhologists.length) return <Loader />;
 
   const sortedPsyhologists = getSortedItems(psyhologists, sortBy);
-
+  console.log(sortedPsyhologists);
   return (
     <section className="pt-[64px] pb-[100px]">
       <div className="container">

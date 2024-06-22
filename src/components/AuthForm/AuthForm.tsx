@@ -5,12 +5,12 @@ import {
   UseFormRegister,
   useForm,
 } from "react-hook-form";
+import { toast } from "react-toastify";
 
 import { InputField } from "../../components";
 
 import { signInSchema, signUpSchema } from "../../schemas";
 import { signInUser, signUpUser } from "../../api";
-import { toast } from "react-toastify";
 
 interface FormData {
   name?: string;
@@ -40,9 +40,13 @@ export const AuthForm = ({ mode, toggleModal }: AuthFormProps) => {
     password,
   }) => {
     try {
-      mode === "signIn"
-        ? await signInUser(email, password)
-        : await signUpUser(name ?? "", password, email);
+      if (mode === "signIn") {
+        await signInUser(email, password);
+        toast.info("Welcome back!");
+      } else {
+        await signUpUser(name ?? "", password, email);
+        toast.info("User registered successfully!");
+      }
       toggleModal();
       reset();
     } catch (error) {

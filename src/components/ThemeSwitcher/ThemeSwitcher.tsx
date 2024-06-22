@@ -44,7 +44,7 @@ export const ThemeSwitcher = () => {
 
   return (
     <div
-      className="absolute top-[50%] translate-y-[-50%] sm-max:right-[40px] right-[50px] md:right-[80px] lg:right-[450px] z-20"
+      className="absolute top-[50%] translate-y-[-50%] sm-max:right-[40px] right-[50px] md:right-[80px] lg:right-[600px] z-20"
       ref={dropdownRef}
     >
       <div
