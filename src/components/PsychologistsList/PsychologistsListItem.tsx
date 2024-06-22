@@ -1,17 +1,17 @@
 import { useState } from "react";
 
-import { AppointmentForm, Icon, Modal } from "../../components";
+import { AppointmentForm, Icon, Modal } from "..";
 
-import { Psyhologist } from "../../types";
+import { Psychologist } from "../../types";
 import { useModal, useUser } from "../../hooks";
 
-interface PsyhologistsListItemProps {
-  item: Psyhologist;
+interface PsychologistsListItemProps {
+  item: Psychologist;
   handleFavClick: (id: string) => void;
   favorites: string[];
 }
 
-export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
+export const PsychologistsListItem: React.FC<PsychologistsListItemProps> = ({
   item: {
     _id,
     name,
@@ -75,7 +75,7 @@ export const PsyhologistsListItem: React.FC<PsyhologistsListItemProps> = ({
                   </p>
                   <button
                     type="button"
-                    className="group absolute sm-max:top-[-25px] top-[-40px] sm-max:right-[5px] right-0 md:static"
+                    className="group absolute sm-max:top-[-25px] top-[-40px] sm-max:right-[5px] right-0 md:static active:scale-[0.9] transition duration-150"
                     onClick={() => handleFavClick(_id)}
                   >
                     <Icon

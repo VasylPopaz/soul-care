@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
-import { Filter, Loader, PsyhologistsList } from "../../components";
+import { Filter, Loader, PsychologistsList } from "../../components";
 
 import { useUser } from "../../hooks";
-import { Psyhologist } from "../../types";
+import { Psychologist } from "../../types";
 import { getSortedItems } from "../../helpers";
 import { getFavorites, getPsychologistsById } from "../../api";
 
 const Favorites = () => {
   const { currentUser } = useUser();
-  const [psyhologists, setPsyhologists] = useState<Psyhologist[]>([]);
+  const [psychologists, setPsychologists] = useState<Psychologist[]>([]);
   const [sortBy, setSortBy] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,9 +17,8 @@ const Favorites = () => {
     setIsLoading(true);
     if (currentUser) {
       getFavorites(currentUser.uid).then((res) => {
-        console.log("favID", res);
         getPsychologistsById(res)
-          .then(setPsyhologists)
+          .then(setPsychologists)
           .finally(() => setIsLoading(false));
       });
     }
@@ -28,19 +27,29 @@ const Favorites = () => {
   const handleFilterChange = (value: string) => {
     setSortBy(value);
   };
+  const onFavClick = (items: Psychologist[]) => {
+    setPsychologists(items);
+  };
+
   if (isLoading) return <Loader />;
 
-  const sortedPsyhologists = getSortedItems(psyhologists, sortBy);
+  const sortedPsychologists = getSortedItems(psychologists, sortBy);
 
   return (
     <section className="pt-[64px] pb-[100px]">
       <div className="container">
-        {!psyhologists.length ? (
-          <h1 className="title">Your don't have favorites psyhologists.</h1>
+        {!psychologists.length ? (
+          <h2 className="title">
+            Your list of favorite psychologists is empty.
+          </h2>
         ) : (
           <>
             <Filter onChange={handleFilterChange} />
-            <PsyhologistsList psyhologists={sortedPsyhologists} />
+            <PsychologistsList
+              psychologists={sortedPsychologists}
+              onFavClick={onFavClick}
+              favPage
+            />
           </>
         )}
       </div>

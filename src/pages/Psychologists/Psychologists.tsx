@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 import {
-  PsyhologistsList,
+  PsychologistsList,
   Filter,
   LoadMoreButton,
   Loader,
 } from "../../components";
 
-import { getPsyhologists, getTotalPsychologists } from "../../api";
-import { Psyhologist } from "../../types";
+import { getPsychologists, getTotalPsychologists } from "../../api";
+import { Psychologist } from "../../types";
 import { getSortedItems } from "../../helpers";
 
 const Psyhologists = () => {
-  const [psyhologists, setPsyhologists] = useState<Psyhologist[]>([]);
+  const [psychologists, setPsychologists] = useState<Psychologist[]>([]);
   const [sortBy, setSortBy] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [lastKey, setLastKey] = useState<string | null>(null);
@@ -36,10 +36,10 @@ const Psyhologists = () => {
           );
         }
 
-        const newPsyhologists = await getPsyhologists(lastKey);
-        if (newPsyhologists.length > 0) {
-          setPsyhologists((prev) => [...prev, ...newPsyhologists]);
-          setLastKey(newPsyhologists[newPsyhologists.length - 1].id);
+        const newPsychologists = await getPsychologists(lastKey);
+        if (newPsychologists.length > 0) {
+          setPsychologists((prev) => [...prev, ...newPsychologists]);
+          setLastKey(newPsychologists[newPsychologists.length - 1].id);
         }
       } catch (e) {
         toast.error(e instanceof Error && e.message);
@@ -60,15 +60,15 @@ const Psyhologists = () => {
     // getSortedPsyhologists(value, page);
   };
 
-  if (isLoading && !psyhologists.length) return <Loader />;
+  if (isLoading && !psychologists.length) return <Loader />;
 
-  const sortedPsyhologists = getSortedItems(psyhologists, sortBy);
-  console.log(sortedPsyhologists);
+  const sortedPsychologists = getSortedItems(psychologists, sortBy);
+
   return (
     <section className="pt-[64px] pb-[100px]">
       <div className="container">
         <Filter onChange={handleFilterChange} />
-        <PsyhologistsList psyhologists={sortedPsyhologists} />
+        <PsychologistsList psychologists={sortedPsychologists} />
         {showLoadMore ? <LoadMoreButton onClick={handleLoadMoreClick} /> : null}
       </div>
     </section>

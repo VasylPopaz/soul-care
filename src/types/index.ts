@@ -1,1 +1,1 @@
-export * from "./psyhologist";
+export * from "./psychologist";

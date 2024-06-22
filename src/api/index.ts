@@ -1,3 +1,3 @@
 export * from "./auth";
-export * from "./psyhologists";
+export * from "./psychologists";
 export * from "./users";

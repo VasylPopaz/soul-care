@@ -1,16 +1,16 @@
-export interface PsyhologistReview {
+export interface PsychologistReview {
   reviewer: string;
   rating: number;
   comment: string;
 }
 
-export interface Psyhologist {
+export interface Psychologist {
   _id: string;
   id?: string;
   name: string;
   avatar_url: string;
   experience: string;
-  reviews: PsyhologistReview[];
+  reviews: PsychologistReview[];
   price_per_hour: number;
   rating: number;
   license: string;
@@ -19,6 +19,8 @@ export interface Psyhologist {
   about: string;
 }
 
-export interface PsyhologistsListProps {
-  psyhologists: Psyhologist[];
+export interface PsychologistsListProps {
+  psychologists: Psychologist[];
+  favPage?: boolean;
+  onFavClick?: (items: Psychologist[]) => void;
 }

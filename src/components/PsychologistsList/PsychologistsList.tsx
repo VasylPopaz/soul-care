@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { PsyhologistsListItem } from "./PsyhologistsListItem";
+import { PsychologistsListItem } from "./PsychologistsListItem";
 
 import { useUser } from "../../hooks";
 import { addFavorites, getFavorites } from "../../api";
-import { PsyhologistsListProps } from "../../types";
+import { Psychologist, PsychologistsListProps } from "../../types";
 
-export const PsyhologistsList: React.FC<PsyhologistsListProps> = ({
-  psyhologists,
+export const PsychologistsList: React.FC<PsychologistsListProps> = ({
+  psychologists,
+  onFavClick,
+  favPage = false,
 }) => {
   const { currentUser } = useUser();
   const [favorites, setFavorites] = useState<string[]>([]);
+  const [favoritesPsychologists, setFavoritesPsychologists] =
+    useState<Psychologist[]>(psychologists);
 
   useEffect(() => {
     if (currentUser) {
@@ -27,20 +31,27 @@ export const PsyhologistsList: React.FC<PsyhologistsListProps> = ({
       : [...favorites, id];
 
     setFavorites(updatedFavorites);
+    if (favPage) {
+      const filteredPsychologists = psychologists.filter((item) =>
+        updatedFavorites.includes(item._id)
+      );
+
+      setFavoritesPsychologists(filteredPsychologists);
+      onFavClick && onFavClick(filteredPsychologists);
+    }
 
     try {
-      addFavorites(currentUser.uid, updatedFavorites).then(() => {
-        getFavorites(currentUser.uid).then(setFavorites);
-      });
+      await addFavorites(currentUser.uid, updatedFavorites);
     } catch (error) {
       toast.error("Failed to update favorites. Please try again.");
     }
   };
+  const listToDisplay = favPage ? favoritesPsychologists : psychologists;
 
   return (
     <ul className="flex flex-wrap gap-[32px] md:justify-center md:w-[704px] lg:w-full mb-12 lg:mb-16">
-      {psyhologists.map((item, index) => (
-        <PsyhologistsListItem
+      {listToDisplay.map((item, index) => (
+        <PsychologistsListItem
           key={index}
           item={item}
           {...{ index, handleFavClick, favorites }}

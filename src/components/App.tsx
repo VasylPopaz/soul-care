@@ -8,7 +8,7 @@ import { Loader, SharedLayout } from "../components";
 import { useUser } from "../hooks";
 
 const Home = lazy(() => import("../pages/Home/Home"));
-const Psyhologists = lazy(() => import("../pages/Psyhologists/Psyhologists"));
+const Psyhologists = lazy(() => import("../pages/Psychologists/Psychologists"));
 const Favorites = lazy(() => import("../pages/Favorites/Favorites"));
 
 export const App = () => {
