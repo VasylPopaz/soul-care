@@ -12,7 +12,7 @@ import { getPsychologists, getTotalPsychologists } from "../../api";
 import { Psychologist } from "../../types";
 import { getSortedItems } from "../../helpers";
 
-const Psyhologists = () => {
+const Psychologists = () => {
   const [psychologists, setPsychologists] = useState<Psychologist[]>([]);
   const [sortBy, setSortBy] = useState<string>("");
   const [page, setPage] = useState<number>(1);
@@ -75,4 +75,4 @@ const Psyhologists = () => {
   );
 };
 
-export default Psyhologists;
+export default Psychologists;

@@ -41,7 +41,7 @@ export const NavMenu = ({ toggleMenu }: NavMenuProps) => {
       >
         {[
           { route: "/", label: "Home" },
-          { route: "/psyhologists", label: "Psyhologists" },
+          { route: "/psychologists", label: "Psychologists" },
           { route: "/favorites", label: "Favorites" },
         ].map(({ route, label }, index) => {
           if (!currentUser && label === "Favorites") {

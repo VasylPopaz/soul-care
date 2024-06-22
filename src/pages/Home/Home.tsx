@@ -24,7 +24,7 @@ const Home = () => {
           <button
             type="button"
             className="btn-primary flex items-center gap-[18px] py-[18px] px-[50px] md:text-[16px] lg:text-[20px] leading-[120%] tracking-[-0.01em]"
-            onClick={() => navigate("/psyhologists")}
+            onClick={() => navigate("/psychologists")}
           >
             Get started
             <Icon id="arrow" className="fill-[#fbfbfb]" size="17" />

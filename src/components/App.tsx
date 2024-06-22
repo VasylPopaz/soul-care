@@ -8,7 +8,9 @@ import { Loader, SharedLayout } from "../components";
 import { useUser } from "../hooks";
 
 const Home = lazy(() => import("../pages/Home/Home"));
-const Psyhologists = lazy(() => import("../pages/Psychologists/Psychologists"));
+const Psychologists = lazy(
+  () => import("../pages/Psychologists/Psychologists")
+);
 const Favorites = lazy(() => import("../pages/Favorites/Favorites"));
 
 export const App = () => {
@@ -21,7 +23,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
-          <Route path="/psyhologists" element={<Psyhologists />} />
+          <Route path="/psychologists" element={<Psychologists />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
