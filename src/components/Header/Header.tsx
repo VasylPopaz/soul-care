@@ -11,12 +11,18 @@ import {
 
 import { useModal, useUser } from "../../hooks";
 import { MobileMenuContext } from "../../contexts";
+import { useState } from "react";
 
 export const Header = () => {
+  const [userName, setUserName] = useState<string | null>(null);
   const [isOpenMenu, toggleMenu] = useModal();
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   const { currentUser } = useUser();
+
+  const onSignUpSuccess = (name: string) => {
+    setUserName(name);
+  };
 
   return (
     <>
@@ -31,7 +37,11 @@ export const Header = () => {
           <MobileMenuContext.Provider value={false}>
             <NavMenu />
           </MobileMenuContext.Provider>
-          {currentUser ? <UserMenu /> : <AuthNav />}
+          {currentUser ? (
+            <UserMenu userName={userName} />
+          ) : (
+            <AuthNav onSignUpSuccess={onSignUpSuccess} />
+          )}
           <button type="button" className="lg:hidden" onClick={toggleMenu}>
             <Icon
               id="menu"

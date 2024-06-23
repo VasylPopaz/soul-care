@@ -6,10 +6,11 @@ import { useModal } from "../../hooks";
 import { useMobileMenuContext } from "../../contexts";
 
 interface AuthNavProps {
+  onSignUpSuccess?: (name: string) => void;
   toggleMenu?: () => void;
 }
 
-export const AuthNav = ({ toggleMenu }: AuthNavProps) => {
+export const AuthNav = ({ onSignUpSuccess, toggleMenu }: AuthNavProps) => {
   const isMobileMenu = useMobileMenuContext();
   const [mode, setMode] = useState("");
 
@@ -60,7 +61,11 @@ export const AuthNav = ({ toggleMenu }: AuthNavProps) => {
           isOpen={isOpenModal}
           toggleModal={toggleModal}
         >
-          <AuthForm mode={mode} toggleModal={toggleModal} />
+          <AuthForm
+            mode={mode}
+            onSignUpSuccess={onSignUpSuccess}
+            toggleModal={toggleModal}
+          />
         </Modal>
       )}
     </>

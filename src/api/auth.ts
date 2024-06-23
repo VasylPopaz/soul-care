@@ -24,6 +24,7 @@ export const signUpUser = async (
     await updateProfile(user, {
       displayName: name,
     });
+
     await createUser(user.uid, { name, email });
   } catch (e) {
     throw new Error(`An account with email address ${email} already exists.`);

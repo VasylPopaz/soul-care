@@ -5,10 +5,11 @@ import { signoutUser } from "../../api";
 import { useMobileMenuContext } from "../../contexts";
 
 interface UserMenuProps {
+  userName?: string | null;
   toggleMenu?: () => void;
 }
 
-export const UserMenu = ({ toggleMenu }: UserMenuProps) => {
+export const UserMenu = ({ userName, toggleMenu }: UserMenuProps) => {
   const { currentUser } = useUser();
 
   const isMobileMenu = useMobileMenuContext();
@@ -37,7 +38,7 @@ export const UserMenu = ({ toggleMenu }: UserMenuProps) => {
             isMobileMenu ? "text-center max-w-[240px] break-words" : ""
           }`}
         >
-          {currentUser?.displayName}
+          {currentUser?.displayName || userName}
         </p>
       </div>
 

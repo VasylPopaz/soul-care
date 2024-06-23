@@ -20,10 +20,15 @@ interface FormData {
 
 interface AuthFormProps {
   mode: string;
+  onSignUpSuccess?: (name: string) => void;
   toggleModal: () => void;
 }
 
-export const AuthForm = ({ mode, toggleModal }: AuthFormProps) => {
+export const AuthForm = ({
+  mode,
+  onSignUpSuccess,
+  toggleModal,
+}: AuthFormProps) => {
   const {
     register,
     handleSubmit,
@@ -44,6 +49,7 @@ export const AuthForm = ({ mode, toggleModal }: AuthFormProps) => {
         await signInUser(email, password);
         toast.info("Welcome back!");
       } else {
+        onSignUpSuccess && onSignUpSuccess(name ?? "");
         await signUpUser(name ?? "", password, email);
         toast.info("User registered successfully!");
       }
