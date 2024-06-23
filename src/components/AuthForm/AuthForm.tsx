@@ -9,8 +9,8 @@ import { toast } from "react-toastify";
 
 import { InputField } from "../../components";
 
-import { signInSchema, signUpSchema } from "../../schemas";
 import { signInUser, signUpUser } from "../../api";
+import { signInSchema, signUpSchema } from "../../schemas";
 
 interface FormData {
   name?: string;

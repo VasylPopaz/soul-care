@@ -21,6 +21,7 @@ export interface Psychologist {
 
 export interface PsychologistsListProps {
   psychologists: Psychologist[];
-  favPage?: boolean;
+  isfavPage?: boolean;
+  isLoadMore?: boolean;
   onFavClick?: (items: Psychologist[]) => void;
 }

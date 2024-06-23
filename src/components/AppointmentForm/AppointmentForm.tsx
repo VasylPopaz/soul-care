@@ -6,12 +6,19 @@ import {
   useForm,
 } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
 
 import { InputField } from "../../components";
 
+import { useUser } from "../../hooks";
+import { createAppointment } from "../../api";
 import { appointmentSchema } from "../../schemas";
 
 interface FormData {
+  psychologist?: {
+    _id: string;
+    name: string;
+  };
   name: string;
   phone: string;
   email: string;
@@ -20,16 +27,20 @@ interface FormData {
 }
 
 interface AppointmentFormProps {
+  _id: string;
   name: string;
-  url: string;
+  avatar_url: string;
   toggleModal: () => void;
 }
 
 export const AppointmentForm = ({
+  _id,
   name,
-  url,
+  avatar_url,
   toggleModal,
 }: AppointmentFormProps) => {
+  const { currentUser } = useUser();
+
   const {
     control,
     register,
@@ -45,10 +56,24 @@ export const AppointmentForm = ({
   });
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    data.phone = `+380${data.phone}`;
-    console.log(data);
-    toggleModal();
-    reset();
+    const appointmentData = {
+      ...data,
+      phone: `+380${data.phone}`,
+      time: data.time.toISOString(),
+      psychologist: { _id, name },
+    };
+
+    if (currentUser) {
+      createAppointment(currentUser.uid, appointmentData)
+        .then(() => {
+          toast.info("Appointment created successfully!");
+          toggleModal();
+          reset();
+        })
+        .catch((error) => {
+          toast.error(error.message);
+        });
+    }
   };
 
   return (
@@ -63,7 +88,7 @@ export const AppointmentForm = ({
       </p>
       <div className="flex gap-[14px] mb-6 lg:mb-10">
         <img
-          src={url}
+          src={avatar_url}
           alt={name}
           width={44}
           height={44}
@@ -84,7 +109,7 @@ export const AppointmentForm = ({
           type="text"
           register={register as unknown as UseFormRegister<FieldValues>}
           errors={errors}
-          dirtyFields={dirtyFields}
+          dirtyFields={dirtyFields as Record<string, boolean>}
         />
         <div className="flex flex-col md:flex-row gap-[18px] md:gap-2 w-full md:w-[472px] mb-[18px]">
           <InputField
@@ -95,7 +120,7 @@ export const AppointmentForm = ({
             type="tel"
             register={register as unknown as UseFormRegister<FieldValues>}
             errors={errors}
-            dirtyFields={dirtyFields}
+            dirtyFields={dirtyFields as Record<string, boolean>}
           />
           <Controller
             name="time"
@@ -111,7 +136,7 @@ export const AppointmentForm = ({
                 value={value}
                 onChange={onChange}
                 errors={errors}
-                dirtyFields={dirtyFields}
+                dirtyFields={dirtyFields as Record<string, boolean>}
               />
             )}
           />
@@ -123,7 +148,7 @@ export const AppointmentForm = ({
           type="text"
           register={register as unknown as UseFormRegister<FieldValues>}
           errors={errors}
-          dirtyFields={dirtyFields}
+          dirtyFields={dirtyFields as Record<string, boolean>}
         />
         <InputField
           tag="textarea"
@@ -132,7 +157,7 @@ export const AppointmentForm = ({
           placeholder="Comment"
           register={register as unknown as UseFormRegister<FieldValues>}
           errors={errors}
-          dirtyFields={dirtyFields}
+          dirtyFields={dirtyFields as Record<string, boolean>}
         />
         <button type="submit" className="btn-primary p-4 w-full">
           Send

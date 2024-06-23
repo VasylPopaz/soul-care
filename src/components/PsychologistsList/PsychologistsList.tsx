@@ -9,8 +9,9 @@ import { Psychologist, PsychologistsListProps } from "../../types";
 
 export const PsychologistsList: React.FC<PsychologistsListProps> = ({
   psychologists,
+  isLoadMore = false,
+  isfavPage = false,
   onFavClick,
-  favPage = false,
 }) => {
   const { currentUser } = useUser();
   const [favorites, setFavorites] = useState<string[]>([]);
@@ -23,15 +24,20 @@ export const PsychologistsList: React.FC<PsychologistsListProps> = ({
     }
   }, [currentUser]);
 
+  useEffect(() => {
+    if (isLoadMore) {
+      setFavoritesPsychologists(psychologists);
+    }
+  }, [isLoadMore, psychologists]);
+
   const handleFavClick = async (id: string) => {
     if (!currentUser) return toast.info("Please sign in to add favorites.");
 
     const updatedFavorites = favorites.includes(id)
       ? favorites.filter((favId) => favId !== id)
       : [...favorites, id];
-
     setFavorites(updatedFavorites);
-    if (favPage) {
+    if (isfavPage) {
       const filteredPsychologists = psychologists.filter((item) =>
         updatedFavorites.includes(item._id)
       );
@@ -46,7 +52,8 @@ export const PsychologistsList: React.FC<PsychologistsListProps> = ({
       toast.error("Failed to update favorites. Please try again.");
     }
   };
-  const listToDisplay = favPage ? favoritesPsychologists : psychologists;
+
+  const listToDisplay = isfavPage ? favoritesPsychologists : psychologists;
 
   return (
     <ul className="flex flex-wrap gap-[32px] md:justify-center md:w-[704px] lg:w-full mb-12 lg:mb-16">

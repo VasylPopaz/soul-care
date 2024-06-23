@@ -1,8 +1,8 @@
 import { Icon } from "../../components";
 
-import { signoutUser } from "../../api";
-import { useMobileMenuContext } from "../../context";
 import { useUser } from "../../hooks";
+import { signoutUser } from "../../api";
+import { useMobileMenuContext } from "../../contexts";
 
 interface UserMenuProps {
   toggleMenu?: () => void;

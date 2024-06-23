@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AuthForm, Modal } from "../../components";
 
 import { useModal } from "../../hooks";
-import { useMobileMenuContext } from "../../context";
+import { useMobileMenuContext } from "../../contexts";
 
 interface AuthNavProps {
   toggleMenu?: () => void;

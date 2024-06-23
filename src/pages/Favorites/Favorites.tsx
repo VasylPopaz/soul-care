@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { Filter, Loader, PsychologistsList } from "../../components";
+import {
+  Filter,
+  LoadMoreButton,
+  Loader,
+  PsychologistsList,
+} from "../../components";
 
 import { useUser } from "../../hooks";
 import { Psychologist } from "../../types";
@@ -10,6 +15,7 @@ import { getFavorites, getPsychologistsById } from "../../api";
 const Favorites = () => {
   const { currentUser } = useUser();
   const [psychologists, setPsychologists] = useState<Psychologist[]>([]);
+  const [page, setPage] = useState(1);
   const [sortBy, setSortBy] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,9 +37,20 @@ const Favorites = () => {
     setPsychologists(items);
   };
 
-  if (isLoading) return <Loader />;
+  const handleLoadMoreClick = () => {
+    setPage((prev) => prev + 1);
+  };
 
-  const sortedPsychologists = getSortedItems(psychologists, sortBy);
+  const LIMIT = 3;
+  const isMoreItems = page < Math.ceil(psychologists.length / LIMIT);
+
+  const paginatedPsychologists = psychologists.filter(
+    (item, index) => index < page * LIMIT && item
+  );
+
+  const sortedPsychologists = getSortedItems(paginatedPsychologists, sortBy);
+
+  if (isLoading) return <Loader />;
 
   return (
     <section className="pt-[64px] pb-[100px]">
@@ -48,8 +65,10 @@ const Favorites = () => {
             <PsychologistsList
               psychologists={sortedPsychologists}
               onFavClick={onFavClick}
-              favPage
+              isLoadMore
+              isfavPage
             />
+            {isMoreItems && <LoadMoreButton onClick={handleLoadMoreClick} />}
           </>
         )}
       </div>

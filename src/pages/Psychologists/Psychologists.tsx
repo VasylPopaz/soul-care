@@ -8,9 +8,9 @@ import {
   Loader,
 } from "../../components";
 
-import { getPsychologists, getTotalPsychologists } from "../../api";
 import { Psychologist } from "../../types";
 import { getSortedItems } from "../../helpers";
+import { getPsychologists, getTotalPsychologists } from "../../api";
 
 const Psychologists = () => {
   const [psychologists, setPsychologists] = useState<Psychologist[]>([]);
@@ -56,8 +56,6 @@ const Psychologists = () => {
 
   const handleFilterChange = (value: string) => {
     setSortBy(value);
-    // setPage(1);
-    // getSortedPsyhologists(value, page);
   };
 
   if (isLoading && !psychologists.length) return <Loader />;

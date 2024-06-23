@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 
 import { Icon } from "../../components";
 
-import { themes } from "../../constants";
 import { useTheme } from "../../hooks";
+import { themes } from "../../constants";
 
 export const ThemeSwitcher = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -181,8 +181,7 @@ export const PsychologistsListItem: React.FC<PsychologistsListItemProps> = ({
           className="pl-8 pr-[28px] pt-14 py-10 md:pl-[42px] md:pr-10 lg:py-16 lg:pl-16 lg:pr-[40px]"
         >
           <AppointmentForm
-            name={name}
-            url={avatar_url}
+            {...{ _id, name, avatar_url }}
             toggleModal={toggleModal}
           />
         </Modal>

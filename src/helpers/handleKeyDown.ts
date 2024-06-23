@@ -1,6 +1,7 @@
 export const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
   const { key, target } = e;
   const value = (target as HTMLInputElement).value;
+
   const allowedKeys = new Set([
     "Backspace",
     "Delete",

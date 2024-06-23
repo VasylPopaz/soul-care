@@ -11,17 +11,21 @@ import { database } from "../firebase";
 import { Psychologist } from "../types";
 
 export const getAllPsychologists = async () => {
-  const psychologistsRef = ref(database, "/psyhologists/items");
+  try {
+    const psychologistsRef = ref(database, "/psyhologists/items");
+    const snapshot = await get(psychologistsRef);
 
-  const snapshot = await get(psychologistsRef);
+    if (!snapshot.exists()) {
+      return [];
+    }
 
-  if (!snapshot.exists()) {
-    return [];
+    const psychologists = snapshot.val();
+
+    return psychologists;
+  } catch (e) {
+    console.error("Error fetching psychologists:", e);
+    throw e;
   }
-
-  const psychologists = snapshot.val();
-
-  return psychologists;
 };
 
 export const getPsychologists = async (startKey: string | null) => {

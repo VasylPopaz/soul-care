@@ -10,7 +10,7 @@ import {
 } from "../../components";
 
 import { useModal, useUser } from "../../hooks";
-import { MobileMenuContext } from "../../context";
+import { MobileMenuContext } from "../../contexts";
 
 export const Header = () => {
   const [isOpenMenu, toggleMenu] = useModal();

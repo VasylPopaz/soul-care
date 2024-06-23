@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 
-import { useMobileMenuContext } from "../../context";
 import { useUser } from "../../hooks";
+import { useMobileMenuContext } from "../../contexts";
 
 interface NavMenuProps {
   toggleMenu?: () => void;
