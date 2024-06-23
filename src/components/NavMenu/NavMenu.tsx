@@ -20,9 +20,9 @@ export const NavMenu = ({ toggleMenu }: NavMenuProps) => {
 
   return (
     <nav
-      className={`flex gap-10 lg:gap-[60px] items-center ${
-        isMobileMenu ? "flex-col" : ""
-      } ${currentUser ? "lg:gap-[226px]" : "lg:gap-[130px]"}`}
+      className={`flex gap-10  items-center ${isMobileMenu ? "flex-col" : ""} ${
+        currentUser ? "lg:gap-[226px]" : "lg:gap-[130px]"
+      }`}
     >
       <Link
         to="/"

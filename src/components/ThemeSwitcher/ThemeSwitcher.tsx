@@ -44,17 +44,17 @@ export const ThemeSwitcher = () => {
 
   return (
     <div
-      className="absolute top-[50%] translate-y-[-50%] sm-max:right-[40px] right-[50px] md:right-[80px] lg:right-[600px] z-20"
+      className="absolute top-[50%] translate-y-[-50%] sm-max:right-[40px] right-[50px] md:right-[80px] lg:right-[450px] z-20"
       ref={dropdownRef}
     >
       <div
-        className="group flex sm-max:gap-2 gap-3 items-center py-2 px-4 bg-transparent text-primaryTextColor sm-max:text-[14px] text-[16px] leading-[125%] rounded-[14px] cursor-pointer active:text-accentHoverColor focus:text-accentHoverColor  lg:hover:text-accentHoverColor transition duration-300"
+        className="group flex sm-max:gap-2 gap-3 items-center py-2 px-4 bg-transparent text-primaryTextColor sm-max:text-[14px] text-[16px] leading-[125%] rounded-[14px] cursor-pointer active:text-accentColor focus:text-accentColor  lg:hover:text-accentColor transition duration-300"
         onClick={handleToggle}
       >
         Theme
         <Icon
           id="chevron"
-          className={`sm-max:size-[10px] fill-none stroke-primaryTextColor group-active:stroke-accentHoverColor group-focus:stroke-accentHoverColor  lg:group-hover:stroke-accentHoverColor transition duration-300 ${
+          className={`sm-max:size-[10px] fill-none stroke-primaryTextColor group-active:stroke-accentColor group-focus:stroke-accentColor  lg:group-hover:stroke-accentColor transition duration-300 ${
             isOpen ? "" : "rotate-[180deg]"
           }`}
           size="12"

@@ -4,11 +4,28 @@ import { Icon } from "../../components";
 
 import woman1x from "../../assets/images/woman1x.jpg";
 import woman2x from "../../assets/images/woman2x.jpg";
+import { useEffect } from "react";
 
 const Home = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.body.classList.add(
+      "bg-gradient-to-r",
+      "from-firstGradColor",
+      "to-secondGradColor"
+    );
+    return () => {
+      document.body.classList.remove(
+        "bg-gradient-to-r",
+        "from-firstGradColor",
+        "to-secondGradColor"
+      );
+    };
+  }, []);
+
   return (
-    <section className="lg:h-[85vh] py-8 md:pt-[48px] lg:pt-[78px] md:pb-[40px] lg:pb-[100px] bg-gradient-to-r from-firstGradColor to-secondGradColor">
+    <section className="lg:h-[85vh] py-8 md:pt-[48px] lg:pt-[78px] md:pb-[40px] lg:pb-[100px]">
       <div className="container flex flex-col gap-4 md:flex-row md:gap-[10px] lg:gap-[125px] items-center">
         <div className="lg:text-left">
           <h1 className="font-semibold text-[32px] md:text-[48px] lg:text-[80px] leading-[102%] tracking-[-0.02em] mb-[20px]">

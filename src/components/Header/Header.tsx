@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 import {
   UserMenu,
@@ -11,13 +11,11 @@ import {
 
 import { useModal, useUser } from "../../hooks";
 import { MobileMenuContext } from "../../contexts";
-import { useState } from "react";
 
 export const Header = () => {
   const [userName, setUserName] = useState<string | null>(null);
   const [isOpenMenu, toggleMenu] = useModal();
-  const location = useLocation();
-  const isHomePage = location.pathname === "/";
+
   const { currentUser } = useUser();
 
   const onSignUpSuccess = (name: string) => {
@@ -26,13 +24,7 @@ export const Header = () => {
 
   return (
     <>
-      <header
-        className={`${
-          isHomePage
-            ? "bg-gradient-to-r from-firstGradColor to-secondGradColor"
-            : ""
-        } relative border-b border-b-[#191a1519]`}
-      >
+      <header className="relative border-b border-b-[#191a1519]">
         <div className="relative container flex justify-between items-center">
           <MobileMenuContext.Provider value={false}>
             <NavMenu />

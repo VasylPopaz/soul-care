@@ -37,7 +37,7 @@ const Psychologists = () => {
         }
 
         const newPsychologists = await getPsychologists(lastKey);
-        if (newPsychologists.length > 0) {
+        if (newPsychologists.length) {
           setPsychologists((prev) => [...prev, ...newPsychologists]);
           setLastKey(newPsychologists[newPsychologists.length - 1].id);
         }

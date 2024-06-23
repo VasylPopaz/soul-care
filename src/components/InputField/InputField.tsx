@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import { Icon } from "../../components";
+
 import { handleKeyDown } from "../../helpers";
 
 interface InputProps {

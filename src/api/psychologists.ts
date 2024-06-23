@@ -34,19 +34,6 @@ export const getPsychologists = async (startKey: string | null) => {
   try {
     const psychologistsRef = ref(database, "/psyhologists/items");
     let psychologistsQuery;
-    // if (sortBy) {
-    //   console.log("sortBy");
-    //   const [key, order] = sortBy.split("=");
-
-    //   console.log(key);
-    //   console.log(order);
-    //   psychologistsQuery = query(
-    //     psychologistsRef,
-    //     orderByChild(key),
-    //     startAfter(startKey),
-    //     order === "true" ? limitToFirst(LIMIT) : limitToLast(LIMIT)
-    //   );
-    // } else {
     if (startKey) {
       psychologistsQuery = query(
         psychologistsRef,
@@ -61,7 +48,6 @@ export const getPsychologists = async (startKey: string | null) => {
         limitToFirst(LIMIT)
       );
     }
-    // }
 
     const snapshot = await get(psychologistsQuery);
 

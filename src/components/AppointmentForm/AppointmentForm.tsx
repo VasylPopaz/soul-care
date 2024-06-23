@@ -7,11 +7,12 @@ import {
 } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
+import { nanoid } from "nanoid";
 
 import { InputField } from "../../components";
 
 import { useUser } from "../../hooks";
-import { createAppointment } from "../../api";
+import { createAppointment, createAppointmentWithoutSignIn } from "../../api";
 import { appointmentSchema } from "../../schemas";
 
 interface FormData {
@@ -73,11 +74,21 @@ export const AppointmentForm = ({
         .catch((error) => {
           toast.error(error.message);
         });
+    } else {
+      createAppointmentWithoutSignIn(nanoid(), appointmentData)
+        .then(() => {
+          toast.info("Appointment created successfully!");
+          toggleModal();
+          reset();
+        })
+        .catch((error) => {
+          toast.error(error.message);
+        });
     }
   };
 
   return (
-    <div className="scrollbar max-h-[80vh] pr-[8px] md:pr-3 lg:pr-[22px]">
+    <div className="scrollbar max-h-[73vh] md:max-h-[80vh] pr-[8px] md:pr-3 lg:pr-[22px]">
       <h2 className="title w-full md:w-[400px]">
         Make an appointment with a psychologists
       </h2>

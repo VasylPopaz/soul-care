@@ -47,11 +47,11 @@ export const AuthForm = ({
     try {
       if (mode === "signIn") {
         await signInUser(email, password);
-        toast.info("Welcome back!");
+        toast.info(`Welcome back ${email}!`);
       } else {
         onSignUpSuccess && onSignUpSuccess(name ?? "");
-        await signUpUser(name ?? "", password, email);
-        toast.info("User registered successfully!");
+        await signUpUser(name ?? "", email, password);
+        toast.info(`User with email ${email} registered successfully!`);
       }
       toggleModal();
       reset();

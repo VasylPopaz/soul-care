@@ -13,6 +13,7 @@ export * from "./MobileMenu/MobileMenu";
 export * from "./Modal/Modal";
 export * from "./NavMenu/NavMenu";
 export * from "./SharedLayout/SharedLayout";
+export * from "./ScrollUpButton/ScrollUpButton";
 export * from "./ThemeSwitcher/ThemeSwitcher";
 export * from "./UserMenu/UserMenu";
 export * from "./App";

@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
-import { Header } from "../../components";
+import { Header, ScrollUpButton } from "../../components";
 
 export const SharedLayout = () => {
   return (
@@ -11,6 +11,7 @@ export const SharedLayout = () => {
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
+        <ScrollUpButton />
       </main>
     </>
   );

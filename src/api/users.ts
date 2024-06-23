@@ -9,7 +9,7 @@ interface UserData {
 }
 export const createUser = async (userId: string, userData: UserData) => {
   try {
-    const userRef = ref(database, `users/${userId}`);
+    const userRef = ref(database, `/users/${userId}`);
 
     await set(userRef, userData);
   } catch (e) {
@@ -20,7 +20,7 @@ export const createUser = async (userId: string, userData: UserData) => {
 
 export const getFavorites = async (userId: string) => {
   try {
-    const favoritesRef = ref(database, `users/${userId}/favorites`);
+    const favoritesRef = ref(database, `/users/${userId}/favorites`);
     const snapshot = await get(favoritesRef);
 
     if (!snapshot.exists()) {
@@ -37,7 +37,7 @@ export const getFavorites = async (userId: string) => {
 
 export const addFavorites = async (userId: string, items: string[]) => {
   try {
-    const favoritesRef = ref(database, `users/${userId}/favorites`);
+    const favoritesRef = ref(database, `/users/${userId}/favorites`);
     await set(favoritesRef, items);
   } catch (e) {
     console.error("Error adding to favorites:", e);
@@ -50,7 +50,20 @@ export const createAppointment = async (
   appointment: Appointment
 ) => {
   try {
-    const appointmentsRef = ref(database, `users/${userId}/appointment`);
+    const appointmentsRef = ref(database, `/users/${userId}/appointment`);
+    await set(appointmentsRef, appointment);
+  } catch (e) {
+    console.error("Error adding appointment:", e);
+    throw e;
+  }
+};
+
+export const createAppointmentWithoutSignIn = async (
+  id: string,
+  appointment: Appointment
+) => {
+  try {
+    const appointmentsRef = ref(database, `/appointments/${id}`);
     await set(appointmentsRef, appointment);
   } catch (e) {
     console.error("Error adding appointment:", e);

@@ -1,7 +1,6 @@
 import { AuthNav, NavMenu, UserMenu } from "../../components";
 
 import { MobileMenuContext } from "../../contexts";
-
 import { handleClickOnBackdrop } from "../../helpers";
 import { useEscapeKeyClose, useUser } from "../../hooks";
 
