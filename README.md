@@ -33,7 +33,7 @@
 - Vite: Build tool that provides a fast development server and optimized production builds.
 - JavaScript/TypeScript: Programming languages used for frontend development.
 - Tailwind CSS: CSS framework for designing the application's user interface.
-- Firebase Realtime Database: A NoSQL cloud database to store and sync data in real-time between your users' devices.
+- Firebase Realtime Database: A NoSQL cloud database to store and sync data between your user's devices in real-time.
 
 **Future Enhancements:**
 
