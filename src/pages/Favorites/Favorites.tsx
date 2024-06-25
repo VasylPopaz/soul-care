@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import {
   Filter,
@@ -8,9 +9,9 @@ import {
 } from "../../components";
 
 import { useUser } from "../../hooks";
-import { Psychologist } from "../../types";
+import type { Psychologist } from "../../types";
 import { getSortedItems } from "../../helpers";
-import { getFavorites, getPsychologistsById } from "../../api";
+import { getFavPsychologists, getFavorites } from "../../api";
 
 const Favorites = () => {
   const { currentUser } = useUser();
@@ -18,17 +19,33 @@ const Favorites = () => {
   const [page, setPage] = useState(1);
   const [sortBy, setSortBy] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showLoadMore, setShowLoadMore] = useState(false);
+
+  const LIMIT = 3;
 
   useEffect(() => {
     setIsLoading(true);
     if (currentUser) {
-      getFavorites(currentUser.uid).then((res) => {
-        getPsychologistsById(res)
-          .then(setPsychologists)
-          .finally(() => setIsLoading(false));
-      });
+      getFavorites(currentUser.uid)
+        .then((res) => {
+          const totalItems = res.length;
+          const isMoreItems = page * LIMIT < totalItems;
+
+          setShowLoadMore(isMoreItems);
+
+          if (!isMoreItems && totalItems > 3) {
+            toast.info(`You have reached the end of the psyhologists list.`);
+          }
+          getFavPsychologists(res, page).then((data) => {
+            setPsychologists((prev) => [...prev, ...data]);
+          });
+        })
+        .catch((e) => {
+          toast.error(e instanceof Error && e.message);
+        })
+        .finally(() => setIsLoading(false));
     }
-  }, [currentUser]);
+  }, [currentUser, page]);
 
   const handleFilterChange = (value: string) => {
     setSortBy(value);
@@ -41,16 +58,9 @@ const Favorites = () => {
     setPage((prev) => prev + 1);
   };
 
-  const LIMIT = 3;
-  const isMoreItems = page < Math.ceil(psychologists.length / LIMIT);
+  const sortedPsychologists = getSortedItems(psychologists, sortBy);
 
-  const paginatedPsychologists = psychologists.filter(
-    (item, index) => index < page * LIMIT && item
-  );
-
-  const sortedPsychologists = getSortedItems(paginatedPsychologists, sortBy);
-
-  if (isLoading) return <Loader />;
+  if (isLoading && !psychologists.length) return <Loader />;
 
   return (
     <section className="pt-[64px] pb-[100px]">
@@ -65,10 +75,11 @@ const Favorites = () => {
             <PsychologistsList
               psychologists={sortedPsychologists}
               onFavClick={onFavClick}
-              isLoadMore
-              isfavPage
+              isFavPage
             />
-            {isMoreItems && <LoadMoreButton onClick={handleLoadMoreClick} />}
+            {showLoadMore ? (
+              <LoadMoreButton onClick={handleLoadMoreClick} />
+            ) : null}
           </>
         )}
       </div>

@@ -2,18 +2,18 @@ import { useState } from "react";
 
 import { AppointmentForm, Icon, Modal } from "..";
 
-import { Psychologist } from "../../types";
+import type { Psychologist } from "../../types";
 import { useModal, useUser } from "../../hooks";
 
 interface PsychologistsListItemProps {
   item: Psychologist;
   handleFavClick: (id: string) => void;
-  favorites: string[];
+  favoritesIds: string[];
 }
 
 export const PsychologistsListItem: React.FC<PsychologistsListItemProps> = ({
   item: {
-    _id,
+    id,
     name,
     avatar_url,
     rating,
@@ -26,7 +26,7 @@ export const PsychologistsListItem: React.FC<PsychologistsListItemProps> = ({
     about,
   },
   handleFavClick,
-  favorites,
+  favoritesIds,
 }) => {
   const { currentUser } = useUser();
   const [isReadMore, setIsReadMore] = useState(false);
@@ -76,12 +76,12 @@ export const PsychologistsListItem: React.FC<PsychologistsListItemProps> = ({
                   <button
                     type="button"
                     className="group absolute sm-max:top-[-25px] top-[-40px] sm-max:right-[5px] right-0 md:static active:scale-[0.9] transition duration-150"
-                    onClick={() => handleFavClick(_id)}
+                    onClick={() => handleFavClick(id)}
                   >
                     <Icon
                       id="heart"
                       className={` ${
-                        favorites?.includes(_id) && currentUser
+                        favoritesIds?.includes(id) && currentUser
                           ? "fill-accentColor stroke-transparent"
                           : "fill-transparent stroke-primaryTextColor "
                       } group-active:text-accentColor group-focus:text-accentColor group-hover:stroke-accentColor transition duration-300`}
@@ -181,7 +181,7 @@ export const PsychologistsListItem: React.FC<PsychologistsListItemProps> = ({
           className="pl-8 pr-[28px] pt-14 py-10 md:pl-[42px] md:pr-10 lg:py-16 lg:pl-16 lg:pr-[40px]"
         >
           <AppointmentForm
-            {...{ _id, name, avatar_url }}
+            {...{ id, name, avatar_url }}
             toggleModal={toggleModal}
           />
         </Modal>

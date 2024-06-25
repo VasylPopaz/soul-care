@@ -8,7 +8,7 @@ import {
   Loader,
 } from "../../components";
 
-import { Psychologist } from "../../types";
+import type { Psychologist } from "../../types";
 import { getSortedItems } from "../../helpers";
 import { getPsychologists, getTotalPsychologists } from "../../api";
 
@@ -20,34 +20,36 @@ const Psychologists = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showLoadMore, setShowLoadMore] = useState(false);
 
-  useEffect(() => {
-    const fetchPsyhologists = async () => {
-      try {
-        setIsLoading(true);
-        const totalItems = await getTotalPsychologists();
+  const LIMIT = 3;
 
-        const isMoreItems = page * 3 < totalItems;
+  useEffect(() => {
+    setIsLoading(true);
+    getTotalPsychologists()
+      .then((res) => {
+        const totalItems = res;
+        const isMoreItems = page * LIMIT < totalItems;
 
         setShowLoadMore(isMoreItems);
 
         if (!isMoreItems) {
-          toast.info(
-            `We are sorry, but you have reached the end of the psyhologists list.`
-          );
+          toast.info(`You have reached the end of the psyhologists list.`);
         }
 
-        const newPsychologists = await getPsychologists(lastKey);
-        if (newPsychologists.length) {
-          setPsychologists((prev) => [...prev, ...newPsychologists]);
-          setLastKey(newPsychologists[newPsychologists.length - 1].id);
-        }
-      } catch (e) {
+        getPsychologists(lastKey).then((data) => {
+          const newPsychologists = data;
+
+          if (newPsychologists.length) {
+            setPsychologists((prev) => [...prev, ...newPsychologists]);
+            setLastKey(newPsychologists[newPsychologists.length - 1].id);
+          }
+        });
+      })
+      .catch((e) => {
         toast.error(e instanceof Error && e.message);
-      }
-      setIsLoading(false);
-    };
-
-    fetchPsyhologists();
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [page]);
 
   const handleLoadMoreClick = () => {

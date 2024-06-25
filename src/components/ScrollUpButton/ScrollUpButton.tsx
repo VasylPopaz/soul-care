@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import throttle from "lodash.throttle";
 import { IoArrowUpSharp } from "react-icons/io5";
 
 export const ScrollUpButton = () => {
@@ -7,10 +8,10 @@ export const ScrollUpButton = () => {
   const scrollYRef = useRef(0);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
       scrollYRef.current = window.scrollY;
       setIsVisible(scrollYRef.current > 300);
-    };
+    }, 500);
 
     window.addEventListener("scroll", handleScroll);
 

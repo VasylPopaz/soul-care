@@ -8,29 +8,10 @@ import {
 } from "firebase/database";
 
 import { database } from "../firebase";
-import { Psychologist } from "../types";
 
-export const getAllPsychologists = async () => {
-  try {
-    const psychologistsRef = ref(database, "/psyhologists/items");
-    const snapshot = await get(psychologistsRef);
-
-    if (!snapshot.exists()) {
-      return [];
-    }
-
-    const psychologists = snapshot.val();
-
-    return psychologists;
-  } catch (e) {
-    console.error("Error fetching psychologists:", e);
-    throw e;
-  }
-};
+const LIMIT = 3;
 
 export const getPsychologists = async (startKey: string | null) => {
-  const LIMIT = 3;
-
   try {
     const psychologistsRef = ref(database, "/psyhologists/items");
     let psychologistsQuery;
@@ -68,14 +49,28 @@ export const getPsychologists = async (startKey: string | null) => {
   }
 };
 
-export const getPsychologistsById = async (psychologistIds: string[]) => {
-  try {
-    const psychologists = await getAllPsychologists();
+export const getFavPsychologists = async (
+  psychologistIds: string[],
+  page: number
+) => {
+  const startIndex = (page - 1) * LIMIT;
+  const endIndex = startIndex + LIMIT;
 
-    const filteredPsychologists = psychologists.filter(
-      (psychologist: Psychologist) => psychologistIds.includes(psychologist._id)
-    );
-    return filteredPsychologists;
+  const paginatedIds = psychologistIds.filter(
+    (_, index) => index >= startIndex && index < endIndex
+  );
+
+  try {
+    const promises = paginatedIds.map(async (id) => {
+      const snapshot = await get(ref(database, `/psyhologists/items/${id}`));
+      if (snapshot.exists()) {
+        return { id, ...snapshot.val() };
+      }
+    });
+
+    const favoritePsychologists = await Promise.all(promises);
+
+    return favoritePsychologists;
   } catch (e) {
     console.error("Error fetching psychologists:", e);
     throw e;

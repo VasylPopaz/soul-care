@@ -5,8 +5,7 @@ export interface PsychologistReview {
 }
 
 export interface Psychologist {
-  _id: string;
-  id?: string;
+  id: string;
   name: string;
   avatar_url: string;
   experience: string;
@@ -21,7 +20,6 @@ export interface Psychologist {
 
 export interface PsychologistsListProps {
   psychologists: Psychologist[];
-  isfavPage?: boolean;
-  isLoadMore?: boolean;
+  isFavPage?: boolean;
   onFavClick?: (items: Psychologist[]) => void;
 }

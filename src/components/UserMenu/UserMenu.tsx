@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 import { Icon } from "../../components";
 
 import { useUser } from "../../hooks";
@@ -16,7 +18,9 @@ export const UserMenu = ({ userName, toggleMenu }: UserMenuProps) => {
 
   const handleLogOut = () => {
     toggleMenu && toggleMenu();
-    signoutUser();
+    signoutUser()
+      .then()
+      .catch((e) => toast.error(e.message));
   };
 
   return (

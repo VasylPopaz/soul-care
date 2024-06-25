@@ -4,45 +4,35 @@ import { toast } from "react-toastify";
 import { PsychologistsListItem } from "./PsychologistsListItem";
 
 import { useUser } from "../../hooks";
+import type { PsychologistsListProps } from "../../types";
 import { addFavorites, getFavorites } from "../../api";
-import { Psychologist, PsychologistsListProps } from "../../types";
 
 export const PsychologistsList: React.FC<PsychologistsListProps> = ({
   psychologists,
-  isLoadMore = false,
-  isfavPage = false,
+  isFavPage = false,
   onFavClick,
 }) => {
   const { currentUser } = useUser();
-  const [favorites, setFavorites] = useState<string[]>([]);
-  const [favoritesPsychologists, setFavoritesPsychologists] =
-    useState<Psychologist[]>(psychologists);
+  const [favoritesIds, setFavoritesIds] = useState<string[]>([]);
 
   useEffect(() => {
     if (currentUser) {
-      getFavorites(currentUser.uid).then(setFavorites);
+      getFavorites(currentUser.uid).then(setFavoritesIds);
     }
   }, [currentUser]);
-
-  useEffect(() => {
-    if (isLoadMore) {
-      setFavoritesPsychologists(psychologists);
-    }
-  }, [isLoadMore, psychologists]);
 
   const handleFavClick = async (id: string) => {
     if (!currentUser) return toast.info("Please sign in to add favorites.");
 
-    const updatedFavorites = favorites.includes(id)
-      ? favorites.filter((favId) => favId !== id)
-      : [...favorites, id];
-    setFavorites(updatedFavorites);
-    if (isfavPage) {
-      const filteredPsychologists = psychologists.filter((item) =>
-        updatedFavorites.includes(item._id)
-      );
+    const updatedFavorites = favoritesIds.includes(id)
+      ? favoritesIds.filter((favId) => favId !== id)
+      : [...favoritesIds, id];
+    setFavoritesIds(updatedFavorites);
 
-      setFavoritesPsychologists(filteredPsychologists);
+    if (isFavPage) {
+      const filteredPsychologists = psychologists.filter((item) =>
+        updatedFavorites.includes(item.id)
+      );
       onFavClick && onFavClick(filteredPsychologists);
     }
 
@@ -53,7 +43,7 @@ export const PsychologistsList: React.FC<PsychologistsListProps> = ({
     }
   };
 
-  const listToDisplay = isfavPage ? favoritesPsychologists : psychologists;
+  const listToDisplay = psychologists;
 
   return (
     <ul className="flex flex-wrap gap-[32px] md:justify-center md:w-[704px] lg:w-full mb-12 lg:mb-16">
@@ -61,7 +51,7 @@ export const PsychologistsList: React.FC<PsychologistsListProps> = ({
         <PsychologistsListItem
           key={index}
           item={item}
-          {...{ index, handleFavClick, favorites }}
+          {...{ handleFavClick, favoritesIds }}
         />
       ))}
     </ul>

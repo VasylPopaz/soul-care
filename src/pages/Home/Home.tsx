@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 import { Icon } from "../../components";
 
-import woman1x from "../../assets/images/woman1x.jpg";
-import woman2x from "../../assets/images/woman2x.jpg";
-import { useEffect } from "react";
+import woman1x from "../../assets/images/woman1x.webp";
+import woman2x from "../../assets/images/woman2x.webp";
 
 const Home = () => {
   const navigate = useNavigate();
