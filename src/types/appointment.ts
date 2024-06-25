@@ -5,7 +5,7 @@ export interface Appointment {
   time: string;
   comment: string;
   psychologist: {
-    _id: string;
+    id: string;
     name: string;
   };
 }

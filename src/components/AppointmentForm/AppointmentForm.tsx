@@ -12,12 +12,12 @@ import { nanoid } from "nanoid";
 import { InputField } from "../../components";
 
 import { useUser } from "../../hooks";
-import { createAppointment, createAppointmentWithoutSignIn } from "../../api";
 import { appointmentSchema } from "../../schemas";
+import { createAppointment, createAppointmentWithoutSignIn } from "../../api";
 
 interface FormData {
   psychologist?: {
-    _id: string;
+    id: string;
     name: string;
   };
   name: string;
@@ -28,14 +28,14 @@ interface FormData {
 }
 
 interface AppointmentFormProps {
-  _id: string;
+  id: string;
   name: string;
   avatar_url: string;
   toggleModal: () => void;
 }
 
 export const AppointmentForm = ({
-  _id,
+  id,
   name,
   avatar_url,
   toggleModal,
@@ -61,7 +61,7 @@ export const AppointmentForm = ({
       ...data,
       phone: `+380${data.phone}`,
       time: data.time.toISOString(),
-      psychologist: { _id, name },
+      psychologist: { id, name },
     };
 
     if (currentUser) {
