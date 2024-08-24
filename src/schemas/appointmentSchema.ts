@@ -11,6 +11,7 @@ export const appointmentSchema = yup.object().shape({
   phone: yup
     .string()
     .required("Phone number is required.")
+    .matches(/^[0-9]+$/, "Enter a valid phone number.")
     .min(9, "Enter a valid phone number.")
     .max(9, "Enter a valid phone number."),
   time: yup

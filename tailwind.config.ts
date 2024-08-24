@@ -28,6 +28,7 @@ export default {
         iconStrokeColor: "var(--icon-stroke-color)",
         iconFillColor: "var(--icon-fill-color)",
         iconBgColor: "var(--icon-bg-color)",
+        errorTextColor: "var(--error-text-color)",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
@@ -80,7 +81,7 @@ export default {
             transformOrigin: "bottom",
             transform: "scaleX(1)",
           },
-          "&:focus::after": {
+          "&:focus-visible::after": {
             transformOrigin: "bottom",
             transform: "scaleX(1)",
           },

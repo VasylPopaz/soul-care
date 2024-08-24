@@ -77,7 +77,7 @@ export const InputField = ({
           placeholder=""
           defaultValue={defaultValue}
           onKeyDown={name === "phone" ? (e) => handleKeyDown(e) : () => {}}
-          className={`group-input px-[18px] py-4 rounded-[12px] border border-borderColor bg-transparent outline-none w-full hover:border-accentColor focus:border-accentColor placeholder:text-primaryTextColor transition duration-300 ${className}`}
+          className={`group-input px-[18px] py-4 rounded-[12px] border border-borderColor bg-transparent outline-none w-full hover:border-accentColor focus-visible:border-accentColor placeholder:text-primaryTextColor transition duration-300 ${className}`}
           autoComplete="on"
         />
       ) : tag === "textarea" ? (
@@ -85,7 +85,7 @@ export const InputField = ({
           id={name}
           {...register(name, { onChange: handleInputChange })}
           defaultValue={defaultValue}
-          className="px-[18px] py-4 text-[16px] leading-[125%] rounded-[12px] border border-borderColor bg-transparent outline-none w-full h-[116px] hover:border-accentColor focus:border-accentColor placeholder:text-primaryTextColor transition duration-300 resize-none align-top scrollbar "
+          className="px-[18px] py-4 text-[16px] leading-[125%] rounded-[12px] border border-borderColor bg-transparent outline-none w-full h-[116px] hover:border-accentColor focus-visible:border-accentColor placeholder:text-primaryTextColor transition duration-300 resize-none align-top scrollbar "
         />
       ) : (
         <>
@@ -103,7 +103,7 @@ export const InputField = ({
           <Icon
             id="clock"
             size="20"
-            className="absolute top-[50%] right-[20px] translate-y-[-50%] fill-none stroke-primaryTextColor group-hover:stroke-accentColor group-focus:stroke-accentColor transition duration-300"
+            className="absolute top-[50%] right-[20px] translate-y-[-50%] fill-none stroke-primaryTextColor group-hover:stroke-accentColor group-focus-visible:stroke-accentColor transition duration-300"
             onClick={handleIconClick}
           />
         </>
@@ -128,7 +128,7 @@ export const InputField = ({
         </button>
       )}
       {(errors[name]?.message && dirtyFields[name]) || errors[name]?.message ? (
-        <p className="text-red-700 text-[10px] md:text-[12px] bg-firstGradColor absolute bottom-[-9px] left-[12px] px-[4px] rounded-[18px]">
+        <p className="text-errorTextColor text-[10px] md:text-[12px] bg-firstGradColor absolute bottom-[-9px] left-[12px] px-[4px] rounded-[18px]">
           <>{errors[name]?.message}</>
         </p>
       ) : null}

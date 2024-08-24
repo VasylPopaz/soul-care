@@ -3,8 +3,7 @@ import { useEffect } from "react";
 
 import { Icon } from "../../components";
 
-import woman1x from "../../assets/images/woman1x.webp";
-import woman2x from "../../assets/images/woman2x.webp";
+import { woman1x, woman2x } from "../../assets";
 
 const Home = () => {
   const navigate = useNavigate();

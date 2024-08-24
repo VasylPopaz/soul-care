@@ -4,8 +4,8 @@ import { toast } from "react-toastify";
 import { PsychologistsListItem } from "./PsychologistsListItem";
 
 import { useUser } from "../../hooks";
-import type { PsychologistsListProps } from "../../types";
 import { addFavorites, getFavorites } from "../../api";
+import type { PsychologistsListProps } from "../../types";
 
 export const PsychologistsList: React.FC<PsychologistsListProps> = ({
   psychologists,

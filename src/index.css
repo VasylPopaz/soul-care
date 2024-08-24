@@ -66,6 +66,7 @@ html[data-theme="green"] {
   --icon-stroke-color: #191a15;
   --icon-fill-color: transparent;
   --icon-bg-color: #4535af;
+  --error-text-color: #b91c1c;
 }
 html[data-theme="blue"] {
   --color-30: #191a154d;
@@ -88,6 +89,7 @@ html[data-theme="blue"] {
   --icon-stroke-color: #191a15;
   --icon-fill-color: transparent;
   --icon-bg-color: #54be96;
+  --error-text-color: #b91c1c;
 }
 html[data-theme="orange"] {
   --color-30: #191a154d;
@@ -110,6 +112,7 @@ html[data-theme="orange"] {
   --icon-stroke-color: #191a15;
   --icon-fill-color: transparent;
   --icon-bg-color: #54be96;
+  --error-text-color: #b91c1c;
 }
 html[data-theme="dark"] {
   --color-30: #e2e4da4d;
@@ -119,7 +122,7 @@ html[data-theme="dark"] {
   --primary-text-color: #e6e5ea;
   --sec-text-color: #757576;
   --about-text-color: #e6e5ea80;
-  --border-color: #e6e5ea19;
+  --border-color: #fcfcfc6a;
   --accent-color: #2c986f;
   --light-accent-color: #a6d2c1;
   --accent-hover-color: #25624b;
@@ -132,6 +135,7 @@ html[data-theme="dark"] {
   --icon-stroke-color: #302f2f;
   --icon-fill-color: transparent;
   --icon-bg-color: #54be96;
+  --error-text-color: #ef4444;
 }
 /* -------------------------- */
 
@@ -156,10 +160,10 @@ body {
   @apply relative after:content-[''''] after:h-2 after:w-2 after:rounded-[50%] after:bg-accentColor after:absolute after:bottom-[-2px] lg:after:bottom-[28px] after:left-[50%] after:translate-x-[-50%];
 }
 .btn-primary {
-  @apply text-[#fbfbfb] border-transparent bg-accentColor active:bg-accentHoverColor focus:bg-accentHoverColor lg:hover:bg-accentHoverColor rounded-[30px] transition duration-300;
+  @apply text-[#fbfbfb] border-transparent bg-accentColor active:bg-accentHoverColor focus-visible:bg-accentHoverColor lg:hover:bg-accentHoverColor rounded-[30px] transition duration-300;
 }
 .btn-secondary {
-  @apply bg-transparent border border-borderColor active:border-accentColor focus:border-accentColor lg:hover:border-accentColor active:text-accentColor focus:text-accentColor lg:hover:text-accentColor rounded-[30px] transition duration-300;
+  @apply bg-transparent border border-borderColor active:border-accentColor focus-visible:border-accentColor lg:hover:border-accentColor active:text-accentColor focus-visible:text-accentColor lg:hover:text-accentColor rounded-[30px] transition duration-300;
 }
 
 .react-datepicker-popper {
@@ -173,7 +177,7 @@ body {
 }
 
 .react-datepicker__input-container input {
-  @apply px-[18px] py-4 rounded-[12px] border border-borderColor bg-transparent outline-none w-[252px] md:w-[232px] hover:border-accentColor focus:border-accentColor placeholder:text-primaryTextColor transition duration-300;
+  @apply px-[18px] py-4 rounded-[12px] border border-borderColor bg-transparent outline-none w-[252px] md:w-[232px] hover:border-accentColor focus-visible:border-accentColor placeholder:text-primaryTextColor transition duration-300;
 }
 .react-datepicker {
   @apply border-none p-4 bg-datePickerBgColor;

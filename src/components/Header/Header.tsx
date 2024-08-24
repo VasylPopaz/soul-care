@@ -38,7 +38,7 @@ export const Header = () => {
             <Icon
               id="menu"
               size="40"
-              className="fill-accentColor stroke-transparent active:fill-transparent active:stroke-accentColor focus:fill-transparent focus:stroke-accentColor transition duration-3000"
+              className="fill-accentColor stroke-transparent active:fill-transparent active:stroke-accentColor focus-visible:fill-transparent focus-visible:stroke-accentColor transition duration-3000"
             />
           </button>
           <ThemeSwitcher />

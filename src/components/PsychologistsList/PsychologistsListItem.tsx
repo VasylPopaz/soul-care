@@ -84,7 +84,7 @@ export const PsychologistsListItem: React.FC<PsychologistsListItemProps> = ({
                         favoritesIds?.includes(id) && currentUser
                           ? "fill-accentColor stroke-transparent"
                           : "fill-transparent stroke-primaryTextColor "
-                      } group-active:text-accentColor group-focus:text-accentColor group-hover:stroke-accentColor transition duration-300`}
+                      } group-active:text-accentColor group-focus-visible:text-accentColor group-hover:stroke-accentColor transition duration-300`}
                       size="26"
                     />
                   </button>
@@ -164,7 +164,7 @@ export const PsychologistsListItem: React.FC<PsychologistsListItemProps> = ({
               ) : (
                 <button
                   type="button"
-                  className="font-medium text-[16px] leading-[150%] underline active:text-accentColor focus:text-accentColor lg:hover:text-accentColor transition duration-300"
+                  className="font-medium text-[16px] leading-[150%] underline active:text-accentColor focus-visible:text-accentColor lg:hover:text-accentColor transition duration-300"
                   onClick={handleReadMoreClick}
                 >
                   Read more

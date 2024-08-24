@@ -51,7 +51,7 @@ export const NavMenu = ({ toggleMenu }: NavMenuProps) => {
             <li key={index} className="w-full text-center">
               <NavLink
                 to={route}
-                className="inline-block py-[8px] lg:py-[38px] w-full active:text-accentColor lg:hover:text-accentColor transition duration-300"
+                className="inline-block py-[8px] lg:py-[38px] w-full active:text-accentColor lg:hover:text-accentColor lg:focus-visible:text-accentColor transition duration-300"
                 onClick={handleClick}
               >
                 {label}

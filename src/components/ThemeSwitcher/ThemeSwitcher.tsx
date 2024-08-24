@@ -48,13 +48,13 @@ export const ThemeSwitcher = () => {
       ref={dropdownRef}
     >
       <div
-        className="group flex sm-max:gap-2 gap-3 items-center py-2 px-4 bg-transparent text-primaryTextColor sm-max:text-[14px] text-[16px] leading-[125%] rounded-[14px] cursor-pointer active:text-accentColor focus:text-accentColor  lg:hover:text-accentColor transition duration-300"
+        className="group flex sm-max:gap-2 gap-3 items-center py-2 px-4 bg-transparent text-primaryTextColor sm-max:text-[14px] text-[16px] leading-[125%] rounded-[14px] cursor-pointer active:text-accentColor focus-visible:text-accentColor lg:hover:text-accentColor transition duration-300"
         onClick={handleToggle}
       >
         Theme
         <Icon
           id="chevron"
-          className={`sm-max:size-[10px] fill-none stroke-primaryTextColor group-active:stroke-accentColor group-focus:stroke-accentColor  lg:group-hover:stroke-accentColor transition duration-300 ${
+          className={`sm-max:size-[10px] fill-none stroke-primaryTextColor group-active:stroke-accentColor group-focus-visible:stroke-accentColor  lg:group-hover:stroke-accentColor transition duration-300 ${
             isOpen ? "" : "rotate-[180deg]"
           }`}
           size="12"
